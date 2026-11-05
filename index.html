@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Istorija muzike - slušni test i stara srpska muzika</title>
+<meta name="description" content="Interaktivno učenje: slušni test (Šubert, Šuman, Mendelson, List, Šopen) i teorija stare srpske muzike.">
+<meta name="theme-color" content="#09080f">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎼</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#09080f; --bg2:#100e1a; --panel:rgba(255,255,255,.045); --panel2:rgba(255,255,255,.07);
+  --line:rgba(255,255,255,.09); --text:#f4f0e8; --muted:#a6a1b8; --dim:#6f6a82;
+  --gold:#f3c77f; --violet:#8f72ff; --rose:#ff6b8f; --teal:#4fd6c6; --blue:#69a8ff; --ochre:#e5a55a;
+  --ok:#3ee08f; --bad:#ff5a6e;
+  --r:22px; --shadow:0 20px 60px -20px rgba(0,0,0,.7);
+  --serif:'Playfair Display',Georgia,serif; --sans:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+a{color:var(--gold)}
+::selection{background:var(--violet);color:#fff}
+
+/* ---------- animated background ---------- */
+.bgfx{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.38;animation:float 22s ease-in-out infinite alternate}
+.b1{width:520px;height:520px;background:var(--violet);top:-160px;left:-120px}
+.b2{width:460px;height:460px;background:var(--rose);bottom:-160px;right:-100px;animation-delay:-6s;opacity:.25}
+.b3{width:380px;height:380px;background:var(--gold);top:40%;left:55%;animation-delay:-12s;opacity:.16}
+body[data-theme=theory] .b1{background:#b5522e} body[data-theme=theory] .b2{background:#2f5bd8} body[data-theme=theory] .b3{background:var(--ochre)}
+@keyframes float{0%{transform:translate(0,0) scale(1)}50%{transform:translate(80px,60px) scale(1.15)}100%{transform:translate(-40px,120px) scale(.95)}}
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#notesfx{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:14px;padding:14px clamp(14px,4vw,40px);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(9,8,15,.6);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:800;font-size:20px;letter-spacing:.2px;white-space:nowrap}
+.logo .ic{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,var(--violet),var(--rose));box-shadow:0 6px 20px -6px var(--violet);font-size:17px}
+.nav{display:flex;gap:6px;margin-left:auto;background:var(--panel);border:1px solid var(--line);padding:5px;border-radius:999px}
+.nav button{padding:8px 16px;border-radius:999px;font-weight:600;font-size:14px;color:var(--muted);transition:.25s}
+.nav button.on{background:var(--text);color:#111}
+.nav button:not(.on):hover{color:var(--text)}
+@media(max-width:620px){.logo span.t{display:none}.nav button{padding:8px 11px;font-size:13px}}
+
+main{max-width:1180px;margin:0 auto;padding:0 clamp(14px,4vw,36px) 140px}
+.view{display:none;animation:in .5s ease both}
+.view.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(40px,8vw,90px) 0 30px;text-align:center}
+.kicker{display:inline-flex;gap:8px;align-items:center;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel);font-size:13px;color:var(--muted);font-weight:600}
+.kicker i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 12px var(--ok);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.35}}
+h1.big{font-family:var(--serif);font-weight:900;font-size:clamp(46px,9vw,108px);line-height:.98;margin:22px 0 18px;letter-spacing:-1.5px}
+h1.big em{font-style:italic;background:linear-gradient(100deg,var(--gold),var(--rose) 45%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.lead{max-width:640px;margin:0 auto;color:var(--muted);font-size:clamp(16px,2vw,19px)}
+.portals{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:46px}
+@media(max-width:760px){.portals{grid-template-columns:1fr}}
+.portal{position:relative;text-align:left;border-radius:28px;padding:30px;min-height:290px;overflow:hidden;border:1px solid var(--line);background:var(--panel);transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s;isolation:isolate;display:flex;flex-direction:column}
+.portal:hover{transform:translateY(-6px) rotate(-.3deg);border-color:rgba(255,255,255,.22)}
+.portal::before{content:"";position:absolute;inset:-40%;z-index:-1;opacity:.55;transition:.5s;filter:blur(40px)}
+.portal.p1::before{background:radial-gradient(circle at 30% 30%,var(--violet),transparent 45%),radial-gradient(circle at 80% 70%,var(--rose),transparent 40%)}
+.portal.p2::before{background:radial-gradient(circle at 30% 30%,#c4602f,transparent 45%),radial-gradient(circle at 80% 70%,#2f5bd8,transparent 40%)}
+.portal:hover::before{opacity:.85}
+.portal .emo{font-size:46px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.5))}
+.portal h2{font-family:var(--serif);font-size:clamp(30px,4vw,40px);margin:14px 0 6px;line-height:1.05}
+.portal p{color:rgba(255,255,255,.75);max-width:420px}
+.portal .go{margin-top:auto;padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;background:var(--text);color:#111;font-weight:700;font-size:14px}
+.ring{--p:0;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold) calc(var(--p)*1%),rgba(255,255,255,.12) 0);position:relative;font-size:13px;font-weight:800}
+.ring::after{content:"";position:absolute;inset:5px;border-radius:50%;background:rgba(15,13,24,.92)}
+.ring span{position:relative;z-index:1}
+.tiny{font-size:12px;color:var(--muted)}
+.strip{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:34px}
+.chip{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel);font-size:13px;color:var(--muted);font-weight:600}
+.chip b{color:var(--text)}
+
+/* ---------- section head + subtabs ---------- */
+.shead{padding:44px 0 18px;display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:18px}
+.shead h2{font-family:var(--serif);font-size:clamp(34px,6vw,58px);line-height:1;letter-spacing:-.5px}
+.shead h2 em{font-style:italic;color:var(--gold)}
+body[data-theme=theory] .shead h2 em{color:var(--ochre)}
+.shead p{color:var(--muted);max-width:520px;margin-top:10px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 26px;position:sticky;top:68px;z-index:40;padding:8px 0;background:linear-gradient(var(--bg) 60%,transparent)}
+.tab{padding:10px 16px;border-radius:14px;border:1px solid var(--line);background:var(--panel);font-weight:600;font-size:14px;color:var(--muted);transition:.2s;display:flex;align-items:center;gap:7px}
+.tab:hover{color:var(--text);border-color:rgba(255,255,255,.2)}
+.tab.on{background:linear-gradient(135deg,var(--violet),var(--rose));color:#fff;border-color:transparent;box-shadow:0 10px 30px -10px var(--violet)}
+body[data-theme=theory] .tab.on{background:linear-gradient(135deg,#c4602f,#e5a55a);box-shadow:0 10px 30px -10px #c4602f}
+.panel{display:none;animation:in .4s ease both}.panel.on{display:block}
+
+/* ---------- composer blocks ---------- */
+.comp{margin-bottom:34px;border-radius:var(--r);border:1px solid var(--line);background:var(--panel);overflow:hidden}
+.comp-h{display:flex;gap:18px;align-items:center;padding:22px 24px;background:linear-gradient(90deg,color-mix(in srgb,var(--c) 22%,transparent),transparent 70%)}
+.avatar{flex:none;width:64px;height:64px;border-radius:20px;display:grid;place-items:center;font-family:var(--serif);font-size:28px;font-weight:900;background:var(--c);color:#120f1d;box-shadow:0 10px 30px -10px var(--c);transform:rotate(-4deg)}
+.comp-h h3{font-family:var(--serif);font-size:28px;line-height:1.1}
+.comp-h .meta{color:var(--muted);font-size:14px}
+.comp-h .fact{font-size:14px;margin-top:4px;color:rgba(255,255,255,.82)}
+.pieces{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px;padding:4px 18px 20px}
+.piece{position:relative;border-radius:18px;border:1px solid var(--line);background:rgba(0,0,0,.25);padding:18px;transition:.25s;display:flex;flex-direction:column;gap:10px}
+.piece:hover{border-color:color-mix(in srgb,var(--c) 60%,transparent)}
+.piece.playing{border-color:var(--c);box-shadow:0 0 0 1px var(--c),0 20px 50px -25px var(--c)}
+.piece-top{display:flex;gap:14px;align-items:center}
+.pbtn{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#120f1d;font-size:20px;transition:transform .2s;box-shadow:0 8px 24px -8px var(--c)}
+.pbtn:hover{transform:scale(1.08)}
+.piece h4{font-size:18px;line-height:1.2}
+.piece .sub{font-size:12.5px;color:var(--muted)}
+.bar{height:6px;border-radius:9px;background:rgba(255,255,255,.1);cursor:pointer;position:relative;overflow:hidden}
+.bar i{position:absolute;inset:0 auto 0 0;width:0;background:var(--c);border-radius:9px}
+.tip{font-size:14px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,var(--c) 13%,transparent);border:1px dashed color-mix(in srgb,var(--c) 50%,transparent)}
+.tip b{color:var(--c)}
+.facts{font-size:13.5px;color:rgba(255,255,255,.78);padding-left:18px}
+.facts li{margin:3px 0}
+.vers{display:flex;gap:6px;flex-wrap:wrap}
+.vers button{font-size:12px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.vers button.on{border-color:var(--c);color:var(--text);background:color-mix(in srgb,var(--c) 18%,transparent)}
+.know{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto}
+.know button{font-size:13px;font-weight:700;padding:8px 12px;border-radius:12px;border:1px solid var(--line);color:var(--muted);transition:.2s}
+.know button.on{background:var(--ok);color:#06210f;border-color:transparent}
+.credit{font-size:11px;color:var(--dim)}
+.badge{position:absolute;top:12px;right:12px;font-size:11px;font-weight:800;padding:4px 9px;border-radius:999px;background:var(--gold);color:#1a1405}
+
+/* ---------- mini player ---------- */
+.mini{position:fixed;left:50%;bottom:16px;transform:translate(-50%,140%);width:min(760px,calc(100% - 24px));z-index:60;border-radius:22px;border:1px solid rgba(255,255,255,.14);background:rgba(18,15,28,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:var(--shadow);padding:12px 14px;display:flex;gap:14px;align-items:center;transition:transform .45s cubic-bezier(.2,.9,.2,1)}
+.mini.show{transform:translate(-50%,0)}
+.mini canvas{width:64px;height:64px;flex:none}
+.mini .info{flex:1;min-width:0}
+.mini .t1{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini .t2{font-size:12.5px;color:var(--muted)}
+.mini .row{display:flex;align-items:center;gap:10px;margin-top:6px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.mini .row .bar{flex:1}
+.mini .ctrl{width:46px;height:46px;border-radius:50%;background:var(--text);color:#111;font-size:18px;display:grid;place-items:center;flex:none}
+.mini .x{color:var(--muted);font-size:20px;padding:6px}
+
+/* ---------- quiz (listening) ---------- */
+.card{border-radius:var(--r);border:1px solid var(--line);background:var(--panel);padding:clamp(18px,3vw,30px)}
+.setup{display:grid;gap:22px;max-width:760px;margin:0 auto}
+.setup h3{font-family:var(--serif);font-size:30px}
+.opt-group{display:grid;gap:10px}
+.opt-group > span{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{flex:1;min-width:140px;padding:14px;border-radius:16px;border:1px solid var(--line);background:rgba(0,0,0,.2);text-align:left;transition:.2s}
+.seg button b{display:block;font-size:15px}
+.seg button small{color:var(--muted);font-size:12.5px}
+.seg button.on{border-color:var(--gold);background:rgba(243,199,127,.1);box-shadow:inset 0 0 0 1px var(--gold)}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 26px;border-radius:18px;font-weight:800;font-size:17px;background:linear-gradient(135deg,var(--gold),var(--rose));color:#1a0f14;box-shadow:0 18px 40px -16px var(--rose);transition:.2s}
+.cta:hover{transform:translateY(-2px) scale(1.01)}
+.cta.ghost{background:var(--panel2);color:var(--text);box-shadow:none;border:1px solid var(--line)}
+.cta.sm{padding:11px 18px;font-size:15px;border-radius:14px}
+.game{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:26px;align-items:start}
+@media(max-width:860px){.game{grid-template-columns:1fr}}
+.stage{position:relative;display:grid;place-items:center}
+#vinyl{width:100%;max-width:380px;aspect-ratio:1;display:block}
+.hud{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.hud .chip{font-size:14px}
+.timer{height:8px;border-radius:9px;background:rgba(255,255,255,.08);overflow:hidden;margin:6px 0 16px}
+.timer i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--ok),var(--gold),var(--bad));transform-origin:left;transition:transform .1s linear}
+.qtitle{font-family:var(--serif);font-size:clamp(24px,3.5vw,34px);line-height:1.15;margin-bottom:4px}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.answers.nine{grid-template-columns:repeat(3,1fr)}
+@media(max-width:560px){.answers.nine{grid-template-columns:1fr 1fr}}
+.ans{text-align:left;padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:rgba(0,0,0,.25);transition:.18s;position:relative;overflow:hidden}
+.ans b{display:block;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:var(--ac,var(--muted))}
+.ans span{font-weight:700;font-size:15.5px;line-height:1.25}
+.ans:hover:not(:disabled){transform:translateY(-2px);border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.06)}
+.ans.ok{background:rgba(62,224,143,.16);border-color:var(--ok);box-shadow:0 0 0 1px var(--ok)}
+.ans.no{background:rgba(255,90,110,.14);border-color:var(--bad);animation:shake .4s}
+.ans:disabled{cursor:default}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.ctrls{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.reveal{margin-top:18px;border-radius:18px;padding:18px;border:1px solid var(--line);background:rgba(0,0,0,.28);animation:in .35s both}
+.reveal h4{font-family:var(--serif);font-size:24px}
+.streak{position:fixed;left:50%;top:40%;transform:translate(-50%,-50%) scale(.5);font-family:var(--serif);font-weight:900;font-size:clamp(40px,8vw,80px);pointer-events:none;opacity:0;z-index:90;text-shadow:0 10px 40px rgba(0,0,0,.6);white-space:nowrap}
+.streak.go{animation:pop 1s ease forwards}
+@keyframes pop{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}25%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}70%{opacity:1;transform:translate(-50%,-55%) scale(1)}100%{opacity:0;transform:translate(-50%,-75%) scale(.9)}}
+.results{text-align:center;max-width:720px;margin:0 auto}
+.grade{font-family:var(--serif);font-size:120px;line-height:1;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--rose));-webkit-background-clip:text;background-clip:text;color:transparent}
+.miss{display:grid;gap:8px;margin:18px 0;text-align:left}
+.miss div{padding:10px 14px;border-radius:12px;background:rgba(255,90,110,.1);border:1px solid rgba(255,90,110,.3);font-size:14px}
+
+/* ---------- theory ---------- */
+.qa{border-radius:20px;border:1px solid var(--line);background:var(--panel);margin-bottom:14px;overflow:hidden;transition:.25s}
+.qa.open{border-color:rgba(229,165,90,.5);box-shadow:0 20px 50px -30px #c4602f}
+.qa-h{width:100%;display:flex;gap:16px;align-items:center;text-align:left;padding:18px 20px}
+.num{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-family:var(--serif);font-weight:900;font-size:20px;background:linear-gradient(135deg,#c4602f,var(--ochre));color:#1d0f05}
+.qa.done .num{background:var(--ok)}
+.qa-h .q{flex:1;font-weight:700;font-size:16.5px;line-height:1.3}
+.qa-h .q small{display:block;font-weight:500;color:var(--dim);font-size:12.5px;margin-top:3px}
+.qa-h .arr{transition:.3s;color:var(--muted);font-size:18px}
+.qa.open .arr{transform:rotate(180deg)}
+.qa-b{display:none;padding:0 22px 22px 80px}
+@media(max-width:600px){.qa-b{padding:0 18px 18px}}
+.qa.open .qa-b{display:block;animation:in .35s both}
+.ansr{font-size:15.5px;color:rgba(255,255,255,.88)}
+.ansr p{margin:8px 0}
+.ansr ul{padding-left:20px;margin:8px 0}
+.ansr li{margin:5px 0}
+mark{background:linear-gradient(transparent 55%,rgba(229,165,90,.45) 55%);color:inherit;padding:0 2px;font-weight:600}
+.keys{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.keys span{font-size:12.5px;font-weight:700;padding:5px 10px;border-radius:999px;background:rgba(229,165,90,.14);color:var(--ochre);border:1px solid rgba(229,165,90,.3)}
+.mnemo{margin-top:12px;padding:12px 14px;border-radius:14px;background:rgba(105,168,255,.1);border:1px solid rgba(105,168,255,.3);font-size:14px}
+.mnemo b{color:var(--blue)}
+.learned{margin-top:14px;padding:10px 16px;border-radius:12px;font-weight:700;font-size:14px;border:1px solid var(--line)}
+.learned.on{background:var(--ok);color:#06210f;border-color:transparent}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:16px}
+.prog{flex:1;min-width:200px;height:10px;border-radius:9px;background:rgba(255,255,255,.08);overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,#c4602f,var(--ochre),var(--ok));transition:width .5s}
+
+/* flashcards */
+.fc-wrap{max-width:640px;margin:0 auto;perspective:1400px}
+.fc{position:relative;height:400px;cursor:pointer;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.fc.flip{transform:rotateY(180deg)}
+.fc .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:26px;padding:30px;display:flex;flex-direction:column;border:1px solid var(--line);overflow:auto}
+.fc .front{background:linear-gradient(145deg,rgba(196,96,47,.32),rgba(47,91,216,.22)),var(--bg2);justify-content:center;text-align:center}
+.fc .front .n{font-family:var(--serif);font-size:16px;color:var(--ochre);font-weight:800}
+.fc .front h3{font-family:var(--serif);font-size:clamp(24px,4vw,32px);line-height:1.2;margin:12px 0}
+.fc .back{background:var(--bg2);transform:rotateY(180deg)}
+.fc .back ul{padding-left:20px;font-size:16px}
+.fc .back li{margin:8px 0}
+.fc-btns{display:flex;gap:12px;justify-content:center;margin-top:18px}
+.fc-btns button{flex:1;max-width:220px;padding:15px;border-radius:16px;font-weight:800;font-size:16px}
+.no-btn{background:rgba(255,90,110,.15);border:1px solid rgba(255,90,110,.4)!important}
+.yes-btn{background:rgba(62,224,143,.15);border:1px solid rgba(62,224,143,.4)!important}
+
+/* oral */
+.oral{max-width:760px;margin:0 auto}
+.oral .q{font-family:var(--serif);font-size:clamp(26px,4.5vw,40px);line-height:1.15;margin:12px 0 20px}
+.clock{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.clock .ring{--p:100;background:conic-gradient(var(--ochre) calc(var(--p)*1%),rgba(255,255,255,.1) 0)}
+.checks{display:grid;gap:8px;margin:14px 0}
+.check{display:flex;gap:12px;align-items:flex-start;text-align:left;padding:13px 15px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.22);transition:.2s;font-size:15px}
+.check .bx{flex:none;width:22px;height:22px;border-radius:7px;border:2px solid var(--muted);display:grid;place-items:center;font-size:13px;margin-top:1px}
+.check.on{border-color:var(--ok);background:rgba(62,224,143,.1)}
+.check.on .bx{background:var(--ok);border-color:var(--ok);color:#06210f}
+
+/* tquiz */
+.tq{max-width:760px;margin:0 auto}
+.tq .opts{display:grid;gap:10px;margin-top:16px}
+.tq .ans span{font-weight:600}
+.explain{margin-top:14px;padding:14px 16px;border-radius:14px;background:rgba(105,168,255,.1);border:1px solid rgba(105,168,255,.3);font-size:14.5px;animation:in .3s both}
+
+/* match */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:860px;margin:0 auto}
+.match .col{display:grid;gap:10px}
+.mt{padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.25);text-align:left;font-weight:600;font-size:14.5px;transition:.18s;min-height:56px}
+.mt:hover:not(:disabled){border-color:rgba(255,255,255,.3)}
+.mt.sel{border-color:var(--ochre);box-shadow:0 0 0 1px var(--ochre);background:rgba(229,165,90,.12)}
+.mt.done{border-color:var(--ok);background:rgba(62,224,143,.12);opacity:.55}
+.mt.no{border-color:var(--bad);animation:shake .4s}
+
+/* timeline */
+.tl{position:relative;max-width:820px;margin:0 auto;padding-left:34px}
+.tl::before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--ochre),#2f5bd8,var(--rose))}
+.ev{position:relative;margin-bottom:16px;padding:16px 18px;border-radius:16px;border:1px solid var(--line);background:var(--panel);opacity:0;transform:translateX(20px);transition:.6s cubic-bezier(.2,.8,.2,1)}
+.ev.seen{opacity:1;transform:none}
+.ev::before{content:"";position:absolute;left:-30px;top:20px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--ochre)}
+.ev .y{font-family:var(--serif);font-weight:900;font-size:22px;color:var(--ochre)}
+.ev p{color:rgba(255,255,255,.85);font-size:15px}
+
+.foot{text-align:center;color:var(--dim);font-size:12.5px;padding:40px 0 10px}
+.foot details{max-width:760px;margin:10px auto;text-align:left}
+.foot summary{cursor:pointer;text-align:center}
+.foot ul{padding-left:18px;margin-top:8px}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:100}
+.loading{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;vertical-align:-3px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.center{text-align:center}
+.mt-s{margin-top:10px}
+.muted{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body data-theme="home">
+<div class="bgfx"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<canvas id="notesfx"></canvas>
+<canvas id="confetti"></canvas>
+<div class="streak" id="streak"></div>
+
+<header class="top">
+  <div class="logo"><div class="ic">🎼</div><span class="t">Istorija muzike</span></div>
+  <nav class="nav">
+    <button data-go="home" class="on">Početna</button>
+    <button data-go="listen">🎧 Slušni</button>
+    <button data-go="theory">📜 Teorija</button>
+  </nav>
+</header>
+
+<main>
+<!-- ================= HOME ================= -->
+<section class="view on" id="v-home">
+  <div class="hero">
+    <div class="kicker"><i></i> Spremanje za test · slušni + usmeni</div>
+    <h1 class="big">Istorija <em>muzike</em></h1>
+    <p class="lead">Slušaj prave snimke i pogađaj kompozicije kao na testu, pa nauči 10 pitanja iz stare srpske muzike kroz kartice, kviz i usmeno odgovaranje.</p>
+
+    <div class="portals">
+      <button class="portal p1" data-go="listen">
+        <div class="emo">🎧</div>
+        <h2>Slušni test</h2>
+        <p>Šubert, Šuman, Mendelson, List i Šopen. 9 kompozicija, pravi snimci, gramofon koji se vrti i igra pogađanja sa poenima i nizovima.</p>
+        <div class="go"><span class="pill">Kreni da slušaš →</span><div class="ring" id="ringL"><span>0%</span></div></div>
+      </button>
+      <button class="portal p2" data-go="theory">
+        <div class="emo">📜</div>
+        <h2>Teorija</h2>
+        <p>Stara srpska muzika: od Slovena sa lirama, preko Klimenta i Nauma, do Kir Stefana Srbina. 10 pitanja za odgovaranje.</p>
+        <div class="go"><span class="pill">Kreni da učiš →</span><div class="ring" id="ringT"><span>0%</span></div></div>
+      </button>
+    </div>
+    <div class="strip" id="homeStats"></div>
+  </div>
+</section>
+
+<!-- ================= LISTEN ================= -->
+<section class="view" id="v-listen">
+  <div class="shead">
+    <div><h2>Slušni <em>test</em></h2><p>Prvo upoznaj svaku kompoziciju (pročitaj kako da je prepoznaš), pa se testiraj u igri pogađanja.</p></div>
+  </div>
+  <div class="tabs" data-tabs="listen">
+    <button class="tab on" data-p="learn">🎼 Upoznaj</button>
+    <button class="tab" data-p="quiz">🎯 Pogodi kompoziciju</button>
+    <button class="tab" data-p="cheat">⚡ Brzi podsetnik</button>
+  </div>
+
+  <div class="panel on" id="p-learn"><div id="composers"></div></div>
+
+  <div class="panel" id="p-quiz">
+    <div id="qSetup" class="card setup">
+      <div>
+        <h3>Pogodi kompoziciju 🎯</h3>
+        <p class="muted">Pušta se isečak, ti biraš šta je. Brži odgovor = više poena, niz tačnih = množilac.</p>
+      </div>
+      <div class="opt-group"><span>Odakle pušta</span>
+        <div class="seg" data-opt="mode">
+          <button data-v="start" class="on"><b>Od početka</b><small>Kao na pravom testu</small></button>
+          <button data-v="random"><b>Nasumičan deo 🔥</b><small>Teže, iz sredine dela</small></button>
+        </div></div>
+      <div class="opt-group"><span>Ponuđeni odgovori</span>
+        <div class="seg" data-opt="choices">
+          <button data-v="4" class="on"><b>4 ponuđena</b><small>Lakše</small></button>
+          <button data-v="9"><b>Svih 9</b><small>Bez pomoći</small></button>
+        </div></div>
+      <div class="opt-group"><span>Dužina isečka</span>
+        <div class="seg" data-opt="clip">
+          <button data-v="10"><b>10 s</b><small>Za majstore</small></button>
+          <button data-v="20" class="on"><b>20 s</b><small>Normalno</small></button>
+          <button data-v="35"><b>35 s</b><small>Opušteno</small></button>
+        </div></div>
+      <div class="center"><button class="cta" id="qStart">▶ Počni igru (10 rundi)</button><div class="tiny mt-s" id="qBest"></div></div>
+    </div>
+
+    <div id="qGame" style="display:none">
+      <div class="game">
+        <div class="stage"><canvas id="vinyl" width="760" height="760"></canvas></div>
+        <div>
+          <div class="hud" id="qHud"></div>
+          <div class="timer"><i id="qTimer"></i></div>
+          <div class="qtitle" id="qTitle">Šta svira? 🎶</div>
+          <div class="tiny" id="qSub">Slušaj pažljivo...</div>
+          <div class="answers" id="qAnswers"></div>
+          <div class="ctrls" id="qCtrls"></div>
+          <div id="qReveal"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="qResults" class="card results" style="display:none"></div>
+  </div>
+
+  <div class="panel" id="p-cheat"><div class="card"><div id="cheat"></div></div></div>
+</section>
+
+<!-- ================= THEORY ================= -->
+<section class="view" id="v-theory">
+  <div class="shead">
+    <div><h2>Stara srpska <em>muzika</em></h2><p>10 pitanja za odgovaranje. Pročitaj, pa vežbaj karticama, usmenim odgovaranjem i kvizom dok sve ne bude zeleno.</p></div>
+  </div>
+  <div class="tabs" data-tabs="theory">
+    <button class="tab on" data-p="read">📖 Uči</button>
+    <button class="tab" data-p="cards">🃏 Kartice</button>
+    <button class="tab" data-p="oral">🎤 Usmeno</button>
+    <button class="tab" data-p="tquiz">✅ Kviz</button>
+    <button class="tab" data-p="match">🧩 Spoji parove</button>
+    <button class="tab" data-p="time">🕰️ Lenta vremena</button>
+  </div>
+
+  <div class="panel on" id="p-read">
+    <div class="toolbar"><div class="prog"><i id="readProg"></i></div><span class="tiny" id="readTxt"></span>
+      <button class="cta ghost sm" id="openAll">Otvori sve</button></div>
+    <div id="qaList"></div>
+  </div>
+  <div class="panel" id="p-cards"><div id="fcBox"></div></div>
+  <div class="panel" id="p-oral"><div class="card oral" id="oralBox"></div></div>
+  <div class="panel" id="p-tquiz"><div class="card tq" id="tqBox"></div></div>
+  <div class="panel" id="p-match"><div id="matchBox"></div></div>
+  <div class="panel" id="p-time"><div class="tl" id="tl"></div></div>
+</section>
+
+<footer class="foot">
+  Napravljeno za učenje 🎶 · napredak se čuva u tvom browseru
+  <details><summary>Izvori snimaka (Wikimedia Commons)</summary><ul id="credits"></ul></details>
+</footer>
+</main>
+
+<div class="mini" id="mini">
+  <canvas id="miniViz" width="128" height="128"></canvas>
+  <div class="info">
+    <div class="t1" id="miniT1">-</div>
+    <div class="t2" id="miniT2">-</div>
+    <div class="row"><span id="miniCur">0:00</span><div class="bar" id="miniBar" style="--c:var(--gold)"><i></i></div><span id="miniDur">0:00</span></div>
+  </div>
+  <button class="ctrl" id="miniPlay">❚❚</button>
+  <button class="x" id="miniClose" aria-label="Zatvori">✕</button>
+</div>
+
+<script>
+/* =========================================================
+   DATA: listening
+   ========================================================= */
+const W='https://upload.wikimedia.org/wikipedia/commons/transcoded/';
+const COMPOSERS={
+  schubert:{name:'Franc Šubert',short:'Šubert',ini:'Š',years:'1797-1828',land:'Austrija (Beč)',c:'#a08bff',fact:'„Kralj pesme": napisao oko 600 solo pesama (nem. Lied) za glas i klavir. Umro sa samo 31 godinom.'},
+  schumann:{name:'Robert Šuman',short:'Šuman',ini:'R',years:'1810-1856',land:'Nemačka',c:'#ff7a9a',fact:'Pijanista koji je povredio ruku, pa postao kompozitor i muzički kritičar. Žena Klara Šuman bila je čuvena pijanistkinja.'},
+  mendelssohn:{name:'Feliks Mendelson',short:'Mendelson',ini:'M',years:'1809-1847',land:'Nemačka',c:'#4fd6c6',fact:'Čudo od deteta. Ponovo je izveo Bahova „Muke po Mateji" (1829) i tako vratio Baha u život.'},
+  liszt:{name:'Franc List',short:'List',ini:'L',years:'1811-1886',land:'Mađarska',c:'#f3c77f',fact:'Najveći pijanista virtuoz svog doba, prava „rok zvezda" 19. veka. Izmislio simfonijsku poemu.'},
+  chopin:{name:'Frederik Šopen',short:'Šopen',ini:'Š',years:'1810-1849',land:'Poljska (živeo u Parizu)',c:'#76b0ff',fact:'„Pesnik klavira": skoro sve je napisao za klavir (nokturna, mazurke, poloneze, etide).'}
+};
+const PIECES=[
+ {id:'ave',c:'schubert',title:'Ave Marija',sub:'Pesma za glas i klavir (Ellens dritter Gesang, D. 839), 1825.',
+  tip:'<b>Prepoznaj:</b> mirna, molitvena melodija koju peva glas, a klavir ravnomerno „prebira" razložene akorde kao harfa.',
+  facts:['Tekst je iz poeme Valtera Skota „Gospa od jezera" (Elenina treća pesma), molitva Bogorodici.','Kasnije se pevala i sa latinskim tekstom molitve „Ave Maria".','Jedna od najpoznatijih melodija na svetu.'],
+  v:[{l:'Glas i klavir',src:W+'6/6f/Franz_Schubert_-_Ellens_dritter_Gesang.oga/Franz_Schubert_-_Ellens_dritter_Gesang.oga.mp3',d:366,cr:'Dorothea Fayne (glas), Uwe Streibel (klavir) · CC BY 3.0'}]},
+ {id:'erl',c:'schubert',title:'Šumski kralj',sub:'Balada (Erlkönig, D. 328), 1815, po Geteovoj pesmi.',
+  tip:'<b>Prepoznaj:</b> dramatično od prve sekunde, klavir neprekidno lupa brze ponovljene tonove, kao <b>galop konja</b>.',
+  facts:['Šubert je imao samo 18 godina.','Jedan pevač peva 4 lika: pripovedač, otac, dete i Šumski kralj (koji mami dete).','Otac jaše noću sa bolesnim detetom, a na kraju dete umire.'],
+  v:[{l:'Istorijski snimak',src:W+'1/13/Schubert_-_Schumann-Heink_-_Erlk%C3%B6nig.ogg/Schubert_-_Schumann-Heink_-_Erlk%C3%B6nig.ogg.mp3',d:237,cr:'Ernestine Schumann-Heink (istorijski snimak) · javno dobro'}]},
+ {id:'ser',c:'schubert',title:'Serenada',sub:'Pesma (Ständchen, D. 957 br. 4) iz zbirke „Labudova pesma", 1828.',
+  tip:'<b>Prepoznaj:</b> nežna, setna ljubavna melodija u molu, a pratnja zvuči kao <b>gitara ili mandolina</b> (kratki „ćup-ćup" akordi).',
+  facts:['Serenada = ljubavna pesma koja se peva pod prozorom voljene.','Napisana u poslednjoj godini Šubertovog života.','Klavir posle svake fraze „odgovori" kao eho.'],
+  v:[{l:'Klavir',src:W+'c/ca/St%C3%A4ndchen_%28Schubert%29-Serenade_D957_No.4%2C_Player_Jason%2C_Han.ogg/St%C3%A4ndchen_%28Schubert%29-Serenade_D957_No.4%2C_Player_Jason%2C_Han.ogg.mp3',d:220,cr:'Instrumentalna verzija za klavir · CC BY-SA 4.0'},
+     {l:'Glas i orkestar',src:W+'7/71/PDP-CH_-_Beniamino_Gigli%2C_Tenor_an_Members_of_La_Scala_Orchestra_-_Carlo_Sabajno_-_Serenata_-_Schubert_-_Hmv-db1903-32-3312.flac/PDP-CH_-_Beniamino_Gigli%2C_Tenor_an_Members_of_La_Scala_Orchestra_-_Carlo_Sabajno_-_Serenata_-_Schubert_-_Hmv-db1903-32-3312.flac.mp3',d:261,cr:'Beniamino Gigli i orkestar milanske Skale, na italijanskom (istorijski snimak) · javno dobro'}]},
+ {id:'schu',c:'schumann',title:'Klavirski koncert a-moll, op. 54',sub:'Za klavir i orkestar, 1841-1845. (1. stav)',
+  tip:'<b>Prepoznaj:</b> počinje <b>jednim snažnim udarom orkestra</b>, pa klavir „pada" niz stepenice silaznim akordima, a onda oboa nežno zapeva glavnu temu.',
+  facts:['Šumanov jedini klavirski koncert.','Prvi stav je prvo bio posebna „Fantazija" (1841), kasnije su dodata još dva stava.','Na premijeri je solistkinja bila Klara Šuman.'],
+  v:[{l:'Orkestar',src:W+'e/ea/Schumann_-_Piano_Concerto_in_A_minor_Op.54_-_I._Allegro.ogg/Schumann_-_Piano_Concerto_in_A_minor_Op.54_-_I._Allegro.ogg.mp3',d:834,cr:'Musopen · CC0'}]},
+ {id:'mend',c:'mendelssohn',title:'Svadbeni marš',sub:'Iz scenske muzike za Šekspirov „San letnje noći", op. 61, 1842.',
+  tip:'<b>Prepoznaj:</b> počinje <b>fanfarom truba</b> (ta-ta-ta-taaa), pa svečan, sjajan marš u duru. Ovo je muzika sa venčanja!',
+  facts:['Uvertiru za „San letnje noći" Mendelson je napisao još sa 17 godina, a ostatak muzike 16 godina kasnije.','Postao je hit kada je sviran na venčanju britanske princeze Viktorije 1858.','Do danas se svira na izlasku mladenaca iz crkve.'],
+  v:[{l:'Orkestar',src:W+'c/cb/A_Midsummer_Night%27s_Dream_Op._61_Wedding_March_%28Mendelssohn%29_European_Archive.ogg/A_Midsummer_Night%27s_Dream_Op._61_Wedding_March_%28Mendelssohn%29_European_Archive.ogg.mp3',d:294,cr:'European Archive · javno dobro'}]},
+ {id:'camp',c:'liszt',title:'La Kampanela (Zvonce)',sub:'Etida br. 3 iz „Velikih etida po Paganiniju", 1851.',
+  tip:'<b>Prepoznaj:</b> desna ruka u visini stalno udara isti visoki ton kao <b>zvonce</b> 🔔, sa ogromnim skokovima. Virtuozno i „svetlucavo".',
+  facts:['La campanella na italijanskom znači „zvonce".','Tema je iz Paganinijevog violinskog koncerta br. 2; List je prebacio violinsku virtuoznost na klavir.','Jedno od najtežih dela za pijaniste.'],
+  v:[{l:'Klavir',src:W+'c/ca/Liszt-La_Campanella-Greiss.ogg/Liszt-La_Campanella-Greiss.ogg.mp3',d:372,cr:'Romuald Greiss · javno dobro'}]},
+ {id:'hung',c:'liszt',title:'Mađarska rapsodija br. 2',sub:'Za klavir, 1847. (List je napisao 19 mađarskih rapsodija)',
+  tip:'<b>Prepoznaj:</b> dva dela: spor, ozbiljan uvod kao improvizacija ciganskog orkestra (<b>lassan</b>), pa sve brže i luđe (<b>friska</b>, kao čardaš).',
+  facts:['Inspirisana muzikom mađarskih Roma.','Rapsodija = slobodan oblik, smenjuju se različita raspoloženja.','Poznata iz crtanih filmova (npr. Tom i Džeri za klavirom).'],
+  v:[{l:'Klavir',src:W+'2/20/Franz_Liszt_-_Second_Hungarian_Rhapsody.ogg/Franz_Liszt_-_Second_Hungarian_Rhapsody.ogg.mp3',d:786,cr:'Musopen · CC BY-SA 2.0'},
+     {l:'Orkestar',src:W+'a/ab/Hungarian_Rhapsody_No_2.ogg/Hungarian_Rhapsody_No_2.ogg.mp3',d:545,cr:'U.S. Navy Band, orkestarska verzija · javno dobro'}]},
+ {id:'noct',c:'chopin',title:'Nokturno cis-moll',sub:'Op. posth. br. 20 („Lento con gran espressione"), 1830.',
+  tip:'<b>Prepoznaj:</b> nekoliko tihih akorda na početku, pa <b>tužna, pevljiva melodija</b> desne ruke uz talasastu levu. Pred kraj brzi ukrasni nizovi tonova.',
+  facts:['Nokturno = „noćna muzika", sanjarski komad za klavir.','Šopen ga je posvetio sestri Ludviki, a objavljen je tek posle njegove smrti.','Čuven iz filma „Pijanista".'],
+  v:[{l:'Klavir',src:W+'1/12/Chopin%2C_Nocturne_in_C-sharp_minor%2C_Op._Posth.ogg/Chopin%2C_Nocturne_in_C-sharp_minor%2C_Op._Posth.ogg.mp3',d:252,cr:'CC BY 3.0'}]},
+ {id:'fant',c:'chopin',title:'Fantazija-impromptu cis-moll, op. 66',sub:'Za klavir, 1834.',
+  tip:'<b>Prepoznaj:</b> burna <b>brza bujica tonova</b> u desnoj ruci (kao vihor), a u sredini iznenada spora, prelepa lirska melodija, pa opet brzo.',
+  facts:['Impromptu = „kao improvizovano", spontano.','Desna ruka svira 4 tona dok leva svira 3 (poliritam), zato zvuči tako uskomešano.','Šopen nije hteo da je objavi; izašla je posle njegove smrti.'],
+  v:[{l:'Klavir',src:W+'6/62/Frederic_Chopin_-_Fantasy_Impromptu_Opus_66.ogg/Frederic_Chopin_-_Fantasy_Impromptu_Opus_66.ogg.mp3',d:311,cr:'Musopen · CC BY-SA 2.0'}]}
+];
+const BONUS={id:'f49',c:'chopin',bonus:true,title:'Fantazija f-moll, op. 49',sub:'Za klavir, 1841. Za svaki slučaj!',
+  tip:'<b>Ako je profesorka pod „Fantazija" mislila na ovu:</b> počinje sporim, svečanim maršem u niskom registru, pa se razvija u burne talase.',
+  facts:['Na spisku piše samo „Fantazija". Najčešće se misli na Fantaziju-impromptu, ali proveri u svesci.'],
+  v:[{l:'Klavir',src:W+'9/91/Chopin-fantasy-op.49-in-f-minor.ogg/Chopin-fantasy-op.49-in-f-minor.ogg.mp3',d:739,cr:'Musopen · CC0'}]};
+const ALLP=[...PIECES,BONUS];
+const pieceById=id=>ALLP.find(p=>p.id===id);
+
+/* =========================================================
+   DATA: theory
+   ========================================================= */
+const QA=[
+ {q:'Šta obuhvata pojam „stara srpska muzika" u periodizaciji?',qc:'Шта обухвата појам „стара српска музика" у периодизацији?',
+  body:`<p>To je <mark>najstariji period srpske muzičke istorije</mark>: od <mark>doseljenja Slovena (Srba) na Balkan (VI-VII vek)</mark> pa sve do <mark>kraja XVIII veka</mark>, kada počinje nova, građanska srpska muzika (XIX vek).</p>
+  <ul><li>Obuhvata muziku <mark>srednjovekovne srpske države</mark> (do pada Smedereva 1459) i muziku <mark>pod turskom vlašću</mark>.</li>
+  <li>Dve oblasti: <mark>crkvena (duhovna) muzika</mark>, jednoglasno vokalno pojanje u okviru vizantijske kulture, i <mark>svetovna muzika</mark> (dvorska, vojna, narodna).</li>
+  <li>Muzika je pripadala <mark>vizantijskom kulturnom krugu</mark>.</li>
+  <li>Znamo je iz izvora: vizantijski hroničari, žitija i tipici, dubrovački arhivi, freske i minijature, a tek od XV veka i rukopisi sa neumama (notama).</li></ul>`,
+  keys:['VI/VII - kraj XVIII veka','crkvena + svetovna','vizantijski krug','srednji vek + turski period'],
+  short:['Najstariji period srpske muzike','Od doseljenja Slovena (VI-VII v.) do kraja XVIII veka','Srednji vek + period pod Turcima','Crkvena (pojanje) i svetovna muzika, vizantijski krug'],
+  points:['Najstariji period srpske muzike','Od doseljenja Slovena (VI-VII vek)','Do kraja XVIII veka','Srednjovekovna država + turski period','Crkvena i svetovna muzika','Vizantijski kulturni krug'],
+  mnemo:'<b>Zapamti:</b> „Od Slovena do XVIII veka", posle toga dolazi Mokranjčevo doba i nova srpska muzika.'},
+ {q:'Koja je bila najznačajnija prekretnica u razvoju muzike na južnoslovenskim prostorima?',qc:'Која је била најзначајнија прекретница у развоју музике на јужнословенским просторима?',
+  body:`<p>Najveća prekretnica je <mark>primanje hrišćanstva (pokrštavanje) u IX veku</mark> i rad <mark>Ćirila i Metodija</mark>.</p>
+  <ul><li>Braća iz Soluna su 863. (Moravska misija) stvorila <mark>slovensko pismo (glagoljicu)</mark> i prevela crkvene knjige sa grčkog.</li>
+  <li>Uvela su <mark>bogosluženje na slovenskom (narodnom) jeziku</mark>.</li>
+  <li><mark>Grčke (vizantijske) melodije su prilagođene slovenskim tekstovima</mark>, tako nastaje crkvena muzika na slovenskom jeziku.</li>
+  <li>Od tada muzika Južnih Slovena ulazi u <mark>vizantijski kulturni krug</mark>; pojanje je jednoglasno, prvo slogovno (silabično), a kasnije ukrašeno (melizmatično).</li></ul>`,
+  keys:['pokrštavanje IX vek','Ćirilo i Metodije 863','bogosluženje na slovenskom','vizantijske melodije + slovenski tekst'],
+  short:['Pokrštavanje Južnih Slovena (IX vek)','Ćirilo i Metodije: pismo i prevod knjiga','Bogosluženje na slovenskom jeziku','Vizantijske melodije na slovenski tekst'],
+  points:['Primanje hrišćanstva u IX veku','Ćirilo i Metodije (863)','Slovensko pismo i prevod crkvenih knjiga','Bogosluženje na slovenskom jeziku','Grčke melodije prilagođene slovenskom tekstu','Ulazak u vizantijski kulturni krug'],
+  mnemo:'<b>Zapamti:</b> prekretnica = <b>krst + slovo</b>: hrišćanstvo i slovensko pismo, pa se Bogu peva na svom jeziku.'},
+ {q:'Kako su Kliment i Naum uticali na razvoj crkvenog pojanja i škola u Ohridu i Preslavu?',qc:'Како су Климент и Наум утицали на развој црквеног појања и школа у Охриду и Преславу?',
+  body:`<p><mark>Kliment i Naum</mark> su bili najistaknutiji <mark>učenici Ćirila i Metodija</mark>. Kada su proterani iz Moravske (885/886), došli su u Bugarsku kod kneza Borisa i nastavili rad svojih učitelja.</p>
+  <ul><li><mark>Kliment</mark> osniva <mark>Ohridsku školu (886)</mark>, „prvi slovenski univerzitet". Obrazovao je hiljade učenika, sveštenika i pojaca. Pisao je <mark>crkvene pesme (kanone, himne, molitve)</mark> u čast svetitelja, pa se smatra prvim slovenskim himnografom.</li>
+  <li><mark>Naum</mark> radi u <mark>Preslavskoj školi</mark> (886-893), a zatim nasleđuje Klimenta u Ohridu; osnovao je manastir Sv. Nauma na Ohridskom jezeru.</li>
+  <li>Značaj: škole su <mark>ustalile pojanje na slovenskom jeziku</mark> po vizantijskom osmoglasju, <mark>školovale pojce</mark>, prevodile i pisale bogoslužbene knjige, a odatle se crkveno pojanje <mark>širilo na sve južnoslovenske zemlje, pa i na Srbiju</mark>.</li></ul>`,
+  keys:['učenici Ćirila i Metodija','Kliment = Ohrid','Naum = Preslav','škole za pojce','širenje pojanja'],
+  short:['Učenici Ćirila i Metodija','Kliment: Ohridska škola (886), pisao crkvene pesme','Naum: Preslavska škola, pa Ohrid','Škole obučavale pojce i širile slovensko pojanje'],
+  points:['Učenici Ćirila i Metodija','Kliment osniva Ohridsku školu','Naum radi u Preslavskoj školi','Kliment piše crkvene pesme (kanone, himne)','Škole obrazuju sveštenike i pojce','Pojanje na slovenskom se širi i na Srbiju'],
+  mnemo:'<b>Zapamti:</b> <b>K</b>liment = <b>O</b>hrid (KO je prvi?), <b>N</b>aum = <b>P</b>reslav pa Ohrid.'},
+ {q:'Koja grupa aerofonih instrumenata je najbrojnija u umetnosti srednjovekovne Srbije?',qc:'Која група аерофон инструмената је најбројнија у уметности средњовековне Србије?',
+  body:`<p>Aerofoni su <mark>duvački instrumenti</mark> (zvuk nastaje treperenjem vazduha). Na freskama, minijaturama i ikonama srednjovekovne Srbije <mark>najbrojnija grupa su trube</mark>: <mark>busine i rogovi različitih veličina</mark>.</p>
+  <ul><li><mark>Busine</mark> su duge, ravne, kovane (metalne) trube; javlja se i savijena (S) truba.</li>
+  <li><mark>Rogovi</mark> su kraći, od životinjskog roga, drveta ili metala.</li>
+  <li>Slikaju se najčešće na scenama <mark>Rođenja Hristovog, Ruganja Hristu, Strašnog suda</mark> (anđeli trube, npr. Dečani) i kao ilustracije psalama.</li>
+  <li>Ostali aerofoni su ređi: svirale, dvojnice, gajde, zurle, kaval.</li></ul>`,
+  keys:['aerofoni = duvački','trube: busine + rogovi','freske, minijature, ikone'],
+  short:['Aerofoni = duvački instrumenti','Najbrojnije: trube (busine) i rogovi','Busine = duge kovane trube','Scene: Rođenje, Ruganje Hristu, Strašni sud, psalmi'],
+  points:['Aerofoni su duvački instrumenti','Najbrojnije su trube','Busine (duge kovane trube)','Rogovi različitih veličina','Scene Rođenja, Ruganja Hristu, psalmi','Ostali (svirale, gajde) su ređi'],
+  mnemo:'<b>Zapamti:</b> na freskama anđeli <b>trube</b>, zato su trube (busine i rogovi) najbrojnije.'},
+ {q:'Koji su najdragoceniji izvori za proučavanje crkvene muzike od XII do XIV veka?',qc:'Који су најдрагоценији извори за проучавање црквене музике од XII до XIV века?',
+  body:`<p>Iz tog vremena <mark>nema sačuvanih notnih zapisa</mark> (srpski rukopisi sa neumama javljaju se tek kasnije). Zato su najdragoceniji <mark>pisani izvori: žitija i tipici</mark>.</p>
+  <ul><li><mark>Žitija</mark> (životopisi svetitelja i vladara): Sveti Sava i Stefan Prvovenčani (žitija Svetog Simeona Nemanje), <mark>Domentijan i Teodosije</mark> (žitija Svetog Save), kasnije Danilo II.</li>
+  <li><mark>Tipici</mark> Svetog Save (Hilandarski, Karejski, Studenički) su crkvena pravila sa <mark>uputstvima o pojanju</mark> na službama.</li>
+  <li>Opisuju <mark>pojanje na bdenijima, sahranama vladara i prenosu moštiju</mark>, svakodnevno pojanje, pojce i domestike (horovođe). Npr. na opelu Simeonu monasi su pojali „svaki na svom jeziku".</li>
+  <li>Važne su i <mark>službe (pesme) srpskim svetiteljima</mark> sa oznakama glasova (napeva), što pokazuje da su se pevale.</li></ul>`,
+  keys:['nema nota','žitija','tipici','Domentijan i Teodosije','Sveti Sava'],
+  short:['Nema notnih zapisa iz tog doba','Žitija (Sv. Sava, Stefan Prvovenčani, Domentijan, Teodosije)','Tipici Sv. Save: pravila o pojanju','Opisi pojanja na bdenijima, sahranama, prenosu moštiju'],
+  points:['Nema sačuvanih notnih zapisa','Žitija svetitelja i vladara','Domentijan i Teodosije (žitija Sv. Save)','Tipici Svetog Save sa pravilima pojanja','Opisi pojanja (bdenija, sahrane, mošti)','Službe srpskim svetiteljima sa oznakama glasova'],
+  mnemo:'<b>Zapamti:</b> „<b>Ž</b>ivot i <b>T</b>ipik" (<b>ŽT</b>): žitija pričaju šta se pojalo, tipici propisuju kako.'},
+ {q:'Šta izvori govore o muzičarima i muziciranju na feudalnim dvorovima?',qc:'Шта извори говоре о музичарима и музицирању на феудалним дворовима?',
+  body:`<p>Na dvorovima Nemanjića muzika je bila <mark>deo dvorskih ceremonija, gozbi i svečanosti</mark>. Muzičari-zabavljači su se zvali <mark>sviralnici, glumci, praskavnici</mark> (i skomrasi).</p>
+  <ul><li>Bili su <mark>stalno osoblje dvorova i feuda</mark>, ali na <mark>najnižem stupnju</mark> društva: u Dušanovo doba <mark>poklanjani su zajedno sa posedima</mark>.</li>
+  <li>Sveti Sava u prevodu Nomokanona pominje <mark>špilmane</mark> (glumci, plesači, gudači, svirači), kao putujući zabavljači na Zapadu.</li>
+  <li>Na <mark>krunisanju Stefana Prvovenčanog</mark> vlastela je slušala <mark>bubnjeve i gusle</mark>; kralja Milutina su dočekivali pesmama.</li>
+  <li><mark>Car Dušan</mark> je razmenjivao muzičare sa <mark>Dubrovnikom</mark>; <mark>Dragan Prizrenac</mark> je 1335. bio gradski muzičar u Dubrovniku.</li>
+  <li><mark>Despot Stefan Lazarević</mark> imao je <mark>muzičku kapelu na dvoru</mark>; njegovi svirači svirali su na lađama kad je dočekao turskog sultana. Despot Đurađ Branković je voleo muziku (Minhenski psaltir).</li>
+  <li>Svirali su: svirale, laute, trube, gajde, bubnjeve, gusle.</li></ul>`,
+  keys:['sviralnici, glumci, praskavnici','poklanjani uz posede','Dubrovnik','Dragan Prizrenac 1335','Stefan Lazarević - kapela'],
+  short:['Sviralnici, glumci, praskavnici','Stalno osoblje dvora, ali najniži stalež (poklanjani uz posede)','Razmena muzičara sa Dubrovnikom, Dragan Prizrenac 1335','Stefan Lazarević: muzička kapela na dvoru'],
+  points:['Muzika na ceremonijama i gozbama','Nazivi: sviralnici, glumci, praskavnici','Najniži stalež, poklanjani uz posede (Dušan)','Krunisanje Stefana Prvovenčanog: bubnjevi i gusle','Razmena sa Dubrovnikom, Dragan Prizrenac','Stefan Lazarević: muzička kapela na dvoru'],
+  mnemo:'<b>Zapamti:</b> „<b>S-G-P</b>" = Sviralnici, Glumci, Praskavnici.'},
+ {q:'Koje tri porodice membranofonih instrumenata se javljaju u srednjovekovnoj umetnosti i kakvi su talambasi?',qc:'Које три породице мембрафон инструмената се јављају у средњовековној уметности и какви су таламбаси?',
+  body:`<p>Membranofoni su udaraljke sa <mark>zategnutom kožom (membranom)</mark>. Na srednjovekovnim spomenicima Srbije javljaju se tri porodice: <mark>talambasi, bubnjevi i daire</mark>.</p>
+  <ul><li><mark>Bubnjevi</mark> su najbrojniji, javljaju se u svim vekovima i na raznim scenama; tipično balkanski (kao tapan).</li>
+  <li><mark>Daire</mark> su okvirni bubanj (vrsta tamburina) sa zvečkama.</li>
+  <li><mark>Talambasi</mark> su <mark>kotlaste udaraljke</mark> (slični malim timpanima): telo od <mark>bakra, ređe od drveta</mark>, preko otvora zategnuta koža.</li>
+  <li>Sviraju se <mark>u paru, različite veličine</mark> (levi veći, desni manji), udaraju se <mark>maljicama</mark>; orijentalnog porekla (persijsko-arapski naqqara).</li>
+  <li>Na freskama se javljaju od <mark>sredine XIV veka (Dečani)</mark>; stoje na zemlji ili podlozi ili su vezani užetom oko vrata svirača, <mark>nisu na leđima konja</mark> kao u vojnoj muzici Orijenta. Prate ih truba, rog ili busina.</li></ul>`,
+  keys:['talambasi','bubnjevi','daire','kotlasti, bakarni','u paru, maljice','Dečani XIV vek'],
+  short:['Tri porodice: talambasi, bubnjevi, daire','Talambasi: kotlaste udaraljke od bakra (ređe drveta)','Sviraju se u paru, različite veličine, maljicama','Orijentalni; na freskama od XIV veka (Dečani)'],
+  points:['Membranofoni = zategnuta koža','Talambasi, bubnjevi, daire','Talambasi su kotlaste udaraljke','Od bakra, ređe drveta','U paru, različite veličine, udaraju se maljicama','Orijentalno poreklo, od XIV veka (Dečani)'],
+  mnemo:'<b>Zapamti:</b> „<b>TBD</b>" = Talambasi, Bubnjevi, Daire. Talambasi = dva <b>bakarna kotlića</b>.'},
+ {q:'Šta Teofilakt Simokata i Teodor Sinkel beleže o ulozi muzike u ratovima i slovenskim muzičarima?',qc:'Шта Теофилакт Симоката и Теодор Синкел бележе о улози музике у ратовима и словенским музичарима?',
+  body:`<p>Obojica su <mark>vizantijski pisci VII veka</mark>, a njihovi zapisi su <mark>najstarija svedočanstva o muzici Slovena</mark>.</p>
+  <ul><li><mark>Teofilakt Simokata</mark> piše da je car Mavrikije <mark>592.</mark> kod Enatona (Trakija) zarobio <mark>tri Slovena bez oružja, koji su nosili samo muzičke instrumente (kitare, lire)</mark>.</li>
+  <li>Rekli su da žive na kraju zapadnog okeana, da ne znaju da rukuju oružjem i da se <mark>bave muzikom jer vole mir</mark>. To je <mark>najstariji zapis o muzici Južnih Slovena</mark>.</li>
+  <li>Simokata pominje i <mark>bojne trube</mark> i avarsku pesmu: avarski kagan zgrabi bojnu trubu i skuplja vojsku. Muzika u ratu služi za <mark>znake, hrabrenje i zastrašivanje</mark>.</li>
+  <li><mark>Teodor Sinkel</mark> je bio očevidac <mark>avarsko-slovenske opsade Carigrada 626.</mark> Beleži da se duž čitavog bedema i po moru <mark>razlegala vriska i bojni poklici</mark>, ratna buka kao deo borbe.</li></ul>`,
+  keys:['VII vek, Vizantija','592 tri Slovena sa lirama','miroljubivi muzičari','bojne trube','626 opsada Carigrada','bojni poklici'],
+  short:['Simokata: 592. tri Slovena bez oružja, samo sa lirama (kitarama)','Sloveni = miroljubivi, bave se muzikom','Bojne trube i pesma u ratu (Avari)','Sinkel: opsada Carigrada 626, bojni poklici i vriska'],
+  points:['Vizantijski pisci VII veka','Simokata: 592, tri Slovena bez oružja','Nosili su kitare (lire), vole mir i muziku','Najstariji zapis o muzici Južnih Slovena','Bojne trube i pesma u ratu','Sinkel: opsada Carigrada 626, bojni poklici'],
+  mnemo:'<b>Zapamti:</b> <b>S</b>imokata = <b>S</b>viraju (tri Slovena sa lirama, 592), <b>S</b>inkel = <b>S</b>trka i vriska (opsada 626).'},
+ {q:'Kir Stefan Srbin',qc:'Кир Стефан Србин',
+  body:`<p><mark>Prvi poznati srpski kompozitor</mark> (živeo krajem XIV i u XV veku). „Kir" znači <mark>gospodin</mark>, titula poštovanja.</p>
+  <ul><li>Bio je <mark>domestik</mark>, tj. prvi pojac i <mark>horovođa</mark>; smatra se da je sredinom XV veka delovao na <mark>dvoru u Smederevu</mark>.</li>
+  <li>Pisao je crkvene pesme <mark>na grčkom i crkvenoslovenskom</mark>, u <mark>vizantijskoj neumskoj notaciji</mark>, u bogatom (kalofonskom) stilu.</li>
+  <li>Najpoznatija dela: <mark>„Ninja sili nebesnija"</mark> (heruvimska pesma) i <mark>„Vkusite i vidite"</mark> (pričasna), potpisane „Tvorenije domestika kir Stefana Srbina".</li>
+  <li>Sačuvane su u rukopisu Psaltikija (Atinska nacionalna biblioteka); dela je proučio i preneo u savremene note <mark>Dimitrije Stefanović</mark>.</li>
+  <li>Uz njega su poznati i <mark>Isaija Srbin i Nikola Srbin</mark>. To dokazuje da su Srbi aktivno stvarali u okviru vizantijske muzike.</li></ul>`,
+  keys:['prvi srpski kompozitor','domestik = horovođa','Smederevo XV vek','neume','Ninja sili nebesnija','Isaija i Nikola Srbin'],
+  short:['Prvi poznati srpski kompozitor (XV vek)','Domestik (horovođa), verovatno dvor u Smederevu','Pisao neumama, grčki i crkvenoslovenski','„Ninja sili nebesnija", „Vkusite i vidite"'],
+  points:['Prvi poznati srpski kompozitor','XV vek, dvor u Smederevu','Domestik = horovođa, „kir" = gospodin','Vizantijska neumska notacija','„Ninja sili nebesnija" i „Vkusite i vidite"','Uz njega Isaija Srbin i Nikola Srbin'],
+  mnemo:'<b>Zapamti:</b> <b>Kir</b> = gospodin, <b>Stefan</b> kao despot, <b>Smederevo</b>: „Ninja sili" peva hor koji on vodi.'},
+ {q:'Svetovna muzika u srednjem veku',qc:'Световна музика у средњем веку',
+  body:`<p>Svetovna (nereligiozna) muzika nije sačuvana u notama, ali o njoj saznajemo iz <mark>žitija, hronika, zakonika, dubrovačkih arhiva i fresaka</mark>. Imala je iste funkcije kao u drugim feudalnim zemljama.</p>
+  <ul><li><mark>Dvorska muzika</mark>: ceremonije, krunisanja, gozbe, dočeci vladara (sviralnici, glumci, praskavnici; kapela Stefana Lazarevića).</li>
+  <li><mark>Vojna muzika</mark>: <mark>trube, rogovi, busine, bubnjevi i talambasi</mark> za znake u boju, hrabrenje i zastrašivanje.</li>
+  <li><mark>Narodna muzika</mark>: pesme i igre uz obrede, svadbe i svetkovine, <mark>gusle</mark> i svirale; crkva je osuđivala „bezumne" igre i pesme.</li>
+  <li><mark>Putujući muzičari-zabavljači</mark> (špilmani, skomrasi) kao žongleri na Zapadu; veze sa <mark>Dubrovnikom</mark> (Dragan Prizrenac).</li>
+  <li>Instrumenti sa fresaka: lauta, psalterion, gudački instrumenti (rebek), trube, bubnjevi, talambasi, daire, cimbale (tasovi).</li>
+  <li>Pod Turcima (od sredine XV veka) narod peva <mark>uz gusle</mark> i svira tambure, zurle i tapan; srpski guslari bili su poznati i na dvorovima u Poljskoj i Mađarskoj.</li></ul>`,
+  keys:['dvorska','vojna','narodna','putujući zabavljači','gusle','izvori: žitija, freske, Dubrovnik'],
+  short:['Nije zapisana notama, znamo je iz žitija, fresaka, Dubrovnika','Dvorska (ceremonije, gozbe), vojna (trube, bubnjevi)','Narodna (obredi, igre, gusle)','Putujući zabavljači; pod Turcima gusle, zurle, tapan'],
+  points:['Nema nota, izvori su posredni','Dvorska muzika (ceremonije, gozbe)','Vojna muzika (trube, rogovi, bubnjevi)','Narodna muzika (obredi, igre, gusle)','Putujući zabavljači, veza sa Dubrovnikom','Instrumenti sa fresaka (lauta, psalterion...)'],
+  mnemo:'<b>Zapamti:</b> „<b>DVN</b>" = Dvor, Vojska, Narod. Tri mesta gde svira svetovna muzika.'}
+];
+
+const TQ=[
+ ['Koliko Slovena sa muzičkim instrumentima (bez oružja) opisuje Teofilakt Simokata?',['Tri','Pet','Dvanaest','Jednog'],0,'Car Mavrikije je 592. zarobio tri Slovena koji su nosili samo kitare (lire).'],
+ ['Koje godine je opsada Carigrada koju opisuje Teodor Sinkel?',['626.','592.','863.','1335.'],0,'Avarsko-slovenska opsada Carigrada 626. Sinkel beleži vrisku i bojne pokliče.'],
+ ['Ko je osnovao Ohridsku školu?',['Kliment','Naum','Metodije','Sveti Sava'],0,'Kliment Ohridski, 886. godine. Naum je radio u Preslavu.'],
+ ['U kojoj školi je Naum radio pre nego što je nasledio Klimenta u Ohridu?',['Preslavskoj','Hilandarskoj','Studeničkoj','Smederevskoj'],0,'Naum je radio u Preslavskoj školi (886-893).'],
+ ['Koje su tri porodice membranofona na srednjovekovnim spomenicima Srbije?',['Talambasi, bubnjevi, daire','Trube, rogovi, svirale','Lauta, psalterion, harfa','Tasovi, zvona, krotale'],0,'Talambasi, bubnjevi i daire (TBD).'],
+ ['Kakvi su talambasi?',['Kotlaste udaraljke od bakra, sviraju se u paru','Duge kovane trube','Gudački instrument sa jednom žicom','Okvirni bubanj sa zvečkama'],0,'Bakarne (ređe drvene) kotlaste udaraljke, u paru različite veličine, udaraju se maljicama.'],
+ ['Koja grupa aerofona je najbrojnija u srednjovekovnoj umetnosti Srbije?',['Trube (busine) i rogovi','Gajde','Orgulje','Dvojnice'],0,'Kovane trube (busine) i rogovi različitih veličina.'],
+ ['Kako su se zvali muzičari-zabavljači na srpskim dvorovima?',['Sviralnici, glumci, praskavnici','Trubaduri i minezengeri','Domestici i protopsalti','Kantori i organisti'],0,'S-G-P: sviralnici, glumci, praskavnici.'],
+ ['Ko je bio Dragan Prizrenac?',['Srpski muzičar, gradski muzičar u Dubrovniku 1335.','Domestik na dvoru u Smederevu','Pisac žitija Svetog Save','Učenik Ćirila i Metodija'],0,'Čuveni srpski muzičar koji je 1335. svirao kao gradski muzičar u Dubrovniku.'],
+ ['Koji vladar je imao muzičku kapelu na dvoru, a svirači su svirali na lađama kad je dočekao sultana?',['Despot Stefan Lazarević','Stefan Nemanja','Kralj Milutin','Stefan Prvovenčani'],0,'Despot Stefan Lazarević.'],
+ ['U čije doba su muzičari poklanjani zajedno sa posedima?',['Cara Dušana','Kneza Lazara','Despota Đurđa','Kralja Dragutina'],0,'Car Dušan je, kada nekome da posed, davao i muzičare. To pokazuje njihov nizak položaj.'],
+ ['Šta znači „kir" u imenu Kir Stefan Srbin?',['Gospodin','Sveštenik','Pevač','Srbin'],0,'„Kir" je grčka titula poštovanja: gospodin.'],
+ ['Šta je domestik?',['Prvi pojac, horovođa','Dvorski svirač na trubi','Prepisivač knjiga','Vizantijski istoričar'],0,'Domestik vodi hor (pevnicu). Kir Stefan je bio domestik.'],
+ ['Koje je najpoznatije delo Kir Stefana Srbina?',['„Ninja sili nebesnija"','„Ave Marija"','„Osmoglasnik"','„Žitije Svetog Save"'],0,'Heruvimska pesma „Ninja sili nebesnija", a tu je i „Vkusite i vidite".'],
+ ['Kojom notacijom su zapisana dela Kir Stefana?',['Vizantijskim neumama','Linijskim notnim sistemom','Tabulaturom','Nisu zapisana'],0,'Vizantijska neumska notacija, tekst na grčkom i crkvenoslovenskom.'],
+ ['Gde je, kako se smatra, delovao Kir Stefan Srbin?',['Na dvoru u Smederevu','U Ohridu','U Dubrovniku','U Carigradu kao istoričar'],0,'Sredinom XV veka, na dvoru u Smederevu.'],
+ ['Najznačajnija prekretnica u razvoju muzike na južnoslovenskim prostorima je:',['Pokrštavanje i rad Ćirila i Metodija','Dolazak Turaka','Osnivanje Dubrovnika','Pronalazak notnog sistema'],0,'Hrišćanstvo i bogosluženje na slovenskom jeziku (IX vek).'],
+ ['Najdragoceniji izvori za crkvenu muziku XII-XIV veka su:',['Žitija i tipici','Notni rukopisi sa linijama','Dubrovački zakoni','Turski defteri'],0,'Nota iz tog doba nema, pa su glavni izvori žitija i tipici.'],
+ ['Ko su pisci žitija Svetog Save?',['Domentijan i Teodosije','Kliment i Naum','Simokata i Sinkel','Isaija i Nikola Srbin'],0,'Domentijan i Teodosije, hilandarski monasi.'],
+ ['Kakva je bila srpska crkvena muzika u srednjem veku?',['Vokalna i jednoglasna','Instrumentalna i višeglasna','Samo za orgulje','Samo narodna'],0,'Isključivo vokalna, jednoglasna (monofona), pod vizantijskim uticajem.'],
+ ['Šta je vlastela slušala na krunisanju Stefana Prvovenčanog?',['Bubnjeve i gusle','Orgulje','Hor iz Ohrida','Mađarsku rapsodiju 😄'],0,'Bubnjeve i gusle.'],
+ ['Period „stare srpske muzike" traje:',['Od doseljenja Slovena (VI-VII v.) do kraja XVIII veka','Od XIX do XX veka','Samo u XV veku','Od 1804. do 1918.'],0,'Od doseljenja Slovena do kraja XVIII veka.'],
+ ['Na kojim scenama se instrumenti najčešće slikaju?',['Rođenje Hristovo, Ruganje Hristu, psalmi','Bitka na Kosovu','Portreti vladara','Pejzaži'],0,'Rođenje Hristovo, Ruganje Hristu, Strašni sud i ilustracije psalama.'],
+ ['Kako su talambasi prikazani na srpskim freskama?',['Na zemlji ili oko vrata svirača, ne na konju','Uvek na leđima konja','Okačeni na crkveni zvonik','Samo u rukama anđela kao trube'],0,'Za razliku od orijentalne vojne muzike, nisu na leđima konja.'],
+ ['Šta je Sveti Sava pomenuo u prevodu Nomokanona?',['Špilmane (glumce, plesače, svirače)','Talambase','Kir Stefana','Svadbeni marš'],0,'Špilmani: putujući zabavljači, glumci, plesači, gudači i svirači.']
+];
+
+const PAIRS=[
+ ['Kliment','Ohridska škola'],['Naum','Preslavska škola'],['Teofilakt Simokata','Tri Slovena sa lirama (592)'],['Teodor Sinkel','Bojni poklici pod Carigradom (626)'],
+ ['Kir Stefan Srbin','„Ninja sili nebesnija"'],['Dragan Prizrenac','Gradski muzičar u Dubrovniku'],['Stefan Lazarević','Muzička kapela na dvoru'],['Talambasi','Bakarni kotlasti bubnjevi u paru'],
+ ['Busine','Duge kovane trube'],['Daire','Okvirni bubanj sa zvečkama'],['Domentijan i Teodosije','Žitija Svetog Save'],['Ćirilo i Metodije','Bogosluženje na slovenskom']
+];
+
+const TIMELINE=[
+ ['VI-VII vek','Sloveni se doseljavaju na Balkan. Počinje period <b>stare srpske muzike</b>.'],
+ ['592.','<b>Teofilakt Simokata</b>: car Mavrikije zarobljava tri Slovena bez oružja, samo sa lirama (kitarama).'],
+ ['626.','<b>Teodor Sinkel</b> opisuje avarsko-slovensku opsadu Carigrada: vriska i bojni poklici duž bedema.'],
+ ['863.','<b>Ćirilo i Metodije</b>, Moravska misija: slovensko pismo i bogosluženje na slovenskom jeziku.'],
+ ['886.','<b>Kliment</b> osniva Ohridsku školu, <b>Naum</b> radi u Preslavu (886-893).'],
+ ['kraj XII - XIII vek','<b>Žitija i tipici</b> (Sveti Sava, Stefan Prvovenčani, Domentijan, Teodosije): glavni izvori o pojanju.'],
+ ['1217.','Krunisanje <b>Stefana Prvovenčanog</b>: vlastela sluša bubnjeve i gusle.'],
+ ['1335.','<b>Dragan Prizrenac</b> je gradski muzičar u Dubrovniku. U Dečanima (1335-1350) se slikaju talambasi.'],
+ ['XIV vek','<b>Car Dušan</b> razmenjuje muzičare sa Dubrovnikom i poklanja ih uz posede.'],
+ ['1389-1427.','<b>Despot Stefan Lazarević</b> ima muzičku kapelu na dvoru.'],
+ ['XV vek','<b>Kir Stefan Srbin</b>, domestik, verovatno u Smederevu: „Ninja sili nebesnija".'],
+ ['1459.','Pad Smedereva. Pod Turcima narod peva uz <b>gusle</b>, svira tambure, zurle i tapan.'],
+ ['kraj XVIII veka','Kraj perioda stare srpske muzike. Sledi nova srpska muzika (XIX vek).']
+];
+
+/* =========================================================
+   HELPERS + STORAGE
+   ========================================================= */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const fmt=t=>{if(!isFinite(t)||t<0)t=0;t=t|0;return (t/60|0)+':'+String(t%60).padStart(2,'0')};
+const pick=a=>a[Math.random()*a.length|0];
+const S=(()=>{let d={};try{d=JSON.parse(localStorage.getItem('im_v1')||'{}')||{}}catch(e){d={}}
+  return{get:(k,def)=>(k in d?d[k]:def),set:(k,v)=>{d[k]=v;try{localStorage.setItem('im_v1',JSON.stringify(d))}catch(e){}}}})();
+
+/* =========================================================
+   AUDIO ENGINE (one element + analyser for the visualizer)
+   ========================================================= */
+const A={el:null,ctx:null,an:null,data:null,cors:true,src:null,clipEnd:null,owner:null,fake:0};
+function makeEl(withCors){
+  const el=new Audio(); el.preload='auto'; if(withCors) el.crossOrigin='anonymous';
+  el.addEventListener('timeupdate',onTime); el.addEventListener('play',onPlayState); el.addEventListener('pause',onPlayState);
+  el.addEventListener('ended',onPlayState); el.addEventListener('waiting',()=>setLoading(true)); el.addEventListener('playing',()=>{setLoading(false); if(Q.active) quizAudioState();});
+  el.addEventListener('error',onErr); return el;
+}
+A.el=makeEl(true);
+function initCtx(){
+  if(!A.cors) return;
+  try{
+    if(!A.ctx){const C=window.AudioContext||window.webkitAudioContext; if(!C) return; A.ctx=new C();
+      const s=A.ctx.createMediaElementSource(A.el); A.an=A.ctx.createAnalyser(); A.an.fftSize=512; A.an.smoothingTimeConstant=.78;
+      s.connect(A.an); A.an.connect(A.ctx.destination); A.data=new Uint8Array(A.an.frequencyBinCount);}
+    if(A.ctx.state==='suspended') A.ctx.resume();
+  }catch(e){A.ctx=null;A.an=null}
+}
+function onErr(){
+  // if CORS load fails, fall back to a plain element (no analyser, fake visualizer)
+  if(A.cors && A.src){ const src=A.src, t=A.startAt||0; A.cors=false; try{A.el.pause()}catch(e){}
+    A.el=makeEl(false); A.an=null; playSrc(src,t,A.owner); }
+}
+function playSrc(src,start,owner){
+  initCtx();
+  A.src=src; A.startAt=start||0; A.owner=owner||null;
+  A.el.src = start>0 ? src+'#t='+start.toFixed(1) : src;
+  setLoading(true);
+  const p=A.el.play(); if(p&&p.catch) p.catch(()=>{});
+}
+function setLoading(on){ $$('.ldg').forEach(e=>e.style.display=on?'inline-block':'none') }
+function onPlayState(){ updateLearnUI(); updateMini(); }
+function onTime(){
+  if(A.clipEnd!=null && A.el.currentTime>=A.clipEnd){ A.el.pause(); A.clipEnd=null; if(Q.active) quizClipEnded(); }
+  updateMiniTime(); updateLearnBars();
+}
+function stopAudio(){ try{A.el.pause()}catch(e){} A.clipEnd=null }
+
+/* bands for visualizers */
+let fakeVals=new Array(64).fill(0);
+function bands(n){
+  const out=new Array(n), on=!A.el.paused;
+  if(A.an && on){ A.an.getByteFrequencyData(A.data); const len=A.data.length*.72;
+    for(let i=0;i<n;i++){ const idx=Math.min(A.data.length-1,Math.floor(Math.pow(i/n,1.55)*len)+1); out[i]=A.data[idx]/255 } }
+  else { const t=performance.now()/1000;
+    for(let i=0;i<n;i++){ const target=on?(.35+.28*Math.sin(t*3.1+i*.55)*Math.sin(t*1.3+i*.17)+.22*Math.random()):.03; fakeVals[i]=(fakeVals[i]||0)*.8+target*.2; out[i]=Math.max(0,fakeVals[i]) } }
+  return out;
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+function go(v,push=true){
+  $$('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));
+  $$('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.go===v));
+  document.body.dataset.theme=v;
+  if(v!=='listen'){ if(Q.active) quitQuiz(); stopAudio(); hideMini(); }
+  if(push){ try{history.replaceState(null,'',v==='home'?location.pathname:'#'+(v==='listen'?'slusni':'teorija'))}catch(e){} }
+  window.scrollTo({top:0,behavior:'smooth'}); refreshHome();
+  if(v==='theory') observeTimeline();
+}
+$$('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+$$('[data-tabs]').forEach(bar=>{
+  bar.addEventListener('click',e=>{const t=e.target.closest('.tab'); if(!t) return;
+    $$('.tab',bar).forEach(x=>x.classList.toggle('on',x===t));
+    const sec=bar.parentElement; $$('.panel',sec).forEach(p=>p.classList.toggle('on',p.id==='p-'+t.dataset.p));
+    if(bar.dataset.tabs==='listen'){ if(t.dataset.p!=='learn'){ if(!Q.active) {stopAudio();hideMini();} } if(t.dataset.p!=='quiz' && Q.active){ quitQuiz(); } }
+    if(t.dataset.p==='time') observeTimeline();
+    window.scrollTo({top:sec.offsetTop-10,behavior:'smooth'});
+  });
+});
+
+/* =========================================================
+   LEARN (listening)
+   ========================================================= */
+const learnState={cur:null,ver:{}};
+function renderLearn(){
+  const box=$('#composers'); let h='';
+  for(const [k,c] of Object.entries(COMPOSERS)){
+    const ps=ALLP.filter(p=>p.c===k);
+    h+=`<div class="comp" style="--c:${c.c}"><div class="comp-h"><div class="avatar">${c.ini}</div><div><h3>${c.name}</h3><div class="meta">${c.years} · ${c.land} · romantizam</div><div class="fact">${c.fact}</div></div></div><div class="pieces">`;
+    for(const p of ps){
+      const known=(S.get('known',{}))[p.id];
+      h+=`<div class="piece" id="pc-${p.id}">${p.bonus?'<span class="badge">BONUS</span>':''}
+        <div class="piece-top"><button class="pbtn" data-play="${p.id}" aria-label="Pusti">▶</button><div><h4>${p.title}</h4><div class="sub">${p.sub}</div></div></div>
+        <div class="bar" data-seek="${p.id}"><i></i></div>
+        ${p.v.length>1?`<div class="vers">${p.v.map((v,i)=>`<button data-ver="${p.id}:${i}" class="${i===0?'on':''}">${v.l}</button>`).join('')}</div>`:''}
+        <div class="tip">${p.tip}</div>
+        <ul class="facts">${p.facts.map(f=>`<li>${f}</li>`).join('')}</ul>
+        <div class="know">${p.bonus?'<span></span>':`<button data-know="${p.id}" class="${known?'on':''}">${known?'✓ Prepoznajem':'Prepoznajem?'}</button>`}<span class="credit" id="cr-${p.id}">${p.v[0].cr}</span></div>
+      </div>`;
+    }
+    h+='</div></div>';
+  }
+  box.innerHTML=h;
+}
+function curVer(p){ return p.v[learnState.ver[p.id]||0] }
+document.addEventListener('click',e=>{
+  const pb=e.target.closest('[data-play]'); if(pb){ const p=pieceById(pb.dataset.play);
+    if(learnState.cur===p.id && A.owner==='learn'){ if(A.el.paused){initCtx();A.el.play()} else A.el.pause(); }
+    else { learnState.cur=p.id; A.clipEnd=null; playSrc(curVer(p).src,0,'learn'); showMini(p); }
+    return; }
+  const vb=e.target.closest('[data-ver]'); if(vb){ const [id,i]=vb.dataset.ver.split(':'); learnState.ver[id]=+i; const p=pieceById(id);
+    $$(`[data-ver^="${id}:"]`).forEach(b=>b.classList.toggle('on',b===vb)); $('#cr-'+id).textContent=p.v[+i].cr;
+    learnState.cur=id; playSrc(p.v[+i].src,0,'learn'); showMini(p); return; }
+  const kb=e.target.closest('[data-know]'); if(kb){ const k=S.get('known',{}); const id=kb.dataset.know; k[id]=!k[id]; S.set('known',k);
+    kb.classList.toggle('on',k[id]); kb.textContent=k[id]?'✓ Prepoznajem':'Prepoznajem?'; if(k[id]) burst(kb); refreshHome(); return; }
+  const sk=e.target.closest('[data-seek]'); if(sk){ const id=sk.dataset.seek; if(learnState.cur===id && A.owner==='learn' && isFinite(A.el.duration)){ const r=sk.getBoundingClientRect(); A.el.currentTime=(e.clientX-r.left)/r.width*A.el.duration; } return; }
+});
+function updateLearnUI(){
+  $$('.piece').forEach(el=>{ const id=el.id.slice(3); const on=learnState.cur===id && A.owner==='learn';
+    el.classList.toggle('playing',on && !A.el.paused); const b=$('.pbtn',el); if(b) b.textContent=(on&&!A.el.paused)?'❚❚':'▶'; });
+}
+function updateLearnBars(){
+  if(A.owner!=='learn'||!learnState.cur) return; const bar=$(`#pc-${learnState.cur} .bar i`); if(bar&&isFinite(A.el.duration)) bar.style.width=(A.el.currentTime/A.el.duration*100)+'%';
+}
+
+/* mini player */
+function showMini(p){ const c=COMPOSERS[p.c]; $('#miniT1').textContent=p.title; $('#miniT2').textContent=c.name; $('#miniBar').style.setProperty('--c',c.c); $('#mini').classList.add('show'); $('#mini').style.setProperty('--cc',c.c); }
+function hideMini(){ $('#mini').classList.remove('show') }
+function updateMini(){ $('#miniPlay').textContent=A.el.paused?'▶':'❚❚' }
+function updateMiniTime(){ if(A.owner!=='learn') return; $('#miniCur').textContent=fmt(A.el.currentTime); $('#miniDur').textContent=fmt(A.el.duration); const i=$('#miniBar i'); if(isFinite(A.el.duration)) i.style.width=(A.el.currentTime/A.el.duration*100)+'%' }
+$('#miniPlay').onclick=()=>{ if(A.el.paused){initCtx();A.el.play()} else A.el.pause() };
+$('#miniClose').onclick=()=>{ stopAudio(); hideMini(); };
+$('#miniBar').addEventListener('click',e=>{ if(!isFinite(A.el.duration)) return; const r=e.currentTarget.getBoundingClientRect(); A.el.currentTime=(e.clientX-r.left)/r.width*A.el.duration });
+
+/* cheat sheet */
+function renderCheat(){
+  $('#cheat').innerHTML=`<h3 style="font-family:var(--serif);font-size:28px;margin-bottom:6px">⚡ Brzi podsetnik: po čemu prepoznajem</h3><p class="muted" style="margin-bottom:16px">Pročitaj pred test. Jedan „znak" po kompoziciji.</p>
+  <div style="display:grid;gap:10px">${PIECES.map(p=>{const c=COMPOSERS[p.c];return `<div style="display:flex;gap:14px;align-items:center;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.2)"><div style="flex:none;width:12px;height:44px;border-radius:6px;background:${c.c}"></div><div style="flex:1"><b>${c.short} - ${p.title}</b><div class="tiny" style="font-size:13.5px;color:rgba(255,255,255,.8)">${p.tip.replace(/<b>Prepoznaj:<\/b>\s*/,'')}</div></div></div>`}).join('')}</div>
+  <p class="tiny mt-s">Svi su iz <b>romantizma</b> (19. vek). Šubert = solo pesma (Lied), Šuman = koncert, Mendelson = scenska muzika, List = virtuoz, Šopen = pesnik klavira.</p>`;
+}
+
+/* =========================================================
+   LISTENING QUIZ
+   ========================================================= */
+const Q={active:false,opts:{mode:'start',choices:4,clip:20},round:0,total:10,score:0,streak:0,best:0,correct:0,order:[],cur:null,answered:false,t0:0,miss:[],started:false};
+$$('#qSetup .seg').forEach(seg=>seg.addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) return; $$('button',seg).forEach(x=>x.classList.toggle('on',x===b)); const k=seg.dataset.opt; Q.opts[k]=k==='mode'?b.dataset.v:+b.dataset.v;}));
+$('#qStart').onclick=startQuiz;
+function startQuiz(){
+  initCtx(); hideMini(); learnState.cur=null; updateLearnUI();
+  Q.active=true; Q.round=0; Q.score=0; Q.streak=0; Q.best=0; Q.correct=0; Q.miss=[];
+  Q.order=shuffle(PIECES).concat([pick(PIECES)]).slice(0,Q.total);
+  $('#qSetup').style.display='none'; $('#qResults').style.display='none'; $('#qGame').style.display='block';
+  nextRound();
+}
+function quitQuiz(){ Q.active=false; stopAudio(); $('#qGame').style.display='none'; $('#qResults').style.display='none'; $('#qSetup').style.display=''; }
+function hud(){
+  $('#qHud').innerHTML=`<span class="chip">Runda <b>${Q.round}/${Q.total}</b></span><span class="chip">Poeni <b>${Q.score}</b></span><span class="chip">Niz <b>${Q.streak}🔥</b></span><span class="chip">Tačno <b>${Q.correct}</b></span>`;
+}
+function nextRound(){
+  Q.round++; Q.answered=false; Q.started=false; const p=Q.order[Q.round-1]; Q.cur=p; Q.ver=pick(p.v);
+  hud(); $('#qReveal').innerHTML=''; $('#qTitle').textContent='Šta svira? 🎶'; $('#qSub').innerHTML='<span class="ldg loading"></span> Učitavam snimak...';
+  let opts = Q.opts.choices===9? PIECES : shuffle([p,...shuffle(PIECES.filter(x=>x.id!==p.id)).slice(0,3)]);
+  const a=$('#qAnswers'); a.className='answers'+(Q.opts.choices===9?' nine':'');
+  a.innerHTML=opts.map(o=>{const c=COMPOSERS[o.c];return `<button class="ans" data-a="${o.id}" style="--ac:${c.c}"><b>${c.short}</b><span>${o.title}</span></button>`}).join('');
+  $$('.ans',a).forEach(b=>b.onclick=()=>answer(b));
+  $('#qCtrls').innerHTML=`<button class="cta ghost sm" id="qReplay">↺ Pusti ponovo</button><button class="cta ghost sm" id="qMore">+10 s</button><button class="cta ghost sm" id="qQuit">✕ Prekini</button>`;
+  $('#qReplay').onclick=()=>playClip(); $('#qMore').onclick=()=>{ if(A.el.paused){A.el.play()} A.clipEnd=(A.clipEnd||A.el.currentTime)+10; if(!Q.answered) Q.penalty=(Q.penalty||0)+20; };
+  $('#qQuit').onclick=quitQuiz;
+  Q.penalty=0;
+  const d=Q.ver.d||200; Q.start = Q.opts.mode==='start'? 0 : Math.round(d*(.12+Math.random()*.6));
+  playClip(); Q.t0=performance.now();
+  $('#qTimer').style.transform='scaleX(1)';
+}
+function playClip(){ A.clipEnd=Q.start+Q.opts.clip; if(Q.answered) A.clipEnd=null; playSrc(Q.ver.src,Q.start,'quiz'); }
+function quizAudioState(){ if(!A.el.paused && !Q.started && !Q.answered){ Q.started=true; Q.t0=performance.now(); if(!Q.answered) $('#qSub').textContent='Slušaj pažljivo... brži odgovor = više poena ⚡'; } }
+function quizClipEnded(){ if(!Q.answered) $('#qSub').textContent='Isečak je gotov. Pusti ponovo ili uzmi +10 s (košta 20 poena).'; }
+function answer(btn){
+  if(Q.answered) return; Q.answered=true; const p=Q.cur, ok=btn.dataset.a===p.id;
+  const el=Q.started?(performance.now()-Q.t0)/1000:Q.opts.clip; const speed=Math.max(0,Math.round(100-el*(100/Math.max(8,Q.opts.clip))));
+  $$('.ans').forEach(b=>{b.disabled=true; if(b.dataset.a===p.id) b.classList.add('ok')});
+  if(ok){ Q.streak++; Q.best=Math.max(Q.best,Q.streak); Q.correct++; const mult=Math.min(3,1+Math.floor((Q.streak-1)/2)*.5); const pts=Math.max(20,Math.round((100+speed-(Q.penalty||0))*mult)); Q.score+=pts;
+    sfx(true); burst(btn); $('#qTitle').innerHTML=`Tačno! +${pts} ✨`; if(Q.streak>=3) flashStreak(Q.streak); }
+  else { btn.classList.add('no'); Q.streak=0; sfx(false); Q.miss.push(p.id); $('#qTitle').textContent='Ups, nije to 😅'; }
+  hud(); A.clipEnd=null; if(A.el.paused) A.el.play();
+  const c=COMPOSERS[p.c];
+  $('#qSub').textContent='';
+  $('#qReveal').innerHTML=`<div class="reveal" style="--c:${c.c}"><div class="tiny" style="color:${c.c};font-weight:800;letter-spacing:1px">${c.name.toUpperCase()}</div><h4>${p.title}</h4><div class="tiny" style="margin-bottom:10px">${p.sub}</div><div class="tip">${p.tip}</div>
+    <div class="ctrls"><button class="cta sm" id="qNext">${Q.round<Q.total?'Sledeća runda →':'Vidi rezultat 🏆'}</button></div></div>`;
+  $('#qNext').onclick=()=>{ Q.round<Q.total? nextRound() : finishQuiz(); };
+}
+function finishQuiz(){
+  Q.active=false; stopAudio(); $('#qGame').style.display='none';
+  const g=Q.correct>=9?5:Q.correct>=7?4:Q.correct>=5?3:Q.correct>=3?2:1;
+  const msg={5:'Petica! Ti si praktično Šopen 🎹',4:'Odlično! Još malo i petica.',3:'Dobro je, ponovi ove ispod pa opet.',2:'Ima još da se sluša, idi u „Upoznaj" pa probaj ponovo.',1:'Ajde iz početka, prvo poslušaj sve u „Upoznaj" 💪'}[g];
+  const bestPrev=S.get('qbest',0); if(Q.score>bestPrev) S.set('qbest',Q.score); const bc=S.get('qbestc',0); if(Q.correct>bc) S.set('qbestc',Q.correct);
+  const miss=[...new Set(Q.miss)].map(id=>{const p=pieceById(id);return `<div>🔁 <b>${COMPOSERS[p.c].short}</b> - ${p.title}: ${p.tip.replace(/<[^>]+>/g,'').replace('Prepoznaj: ','')}</div>`}).join('');
+  $('#qResults').style.display='block';
+  $('#qResults').innerHTML=`<div class="tiny">Ocena</div><div class="grade">${g}</div><h3 style="font-family:var(--serif);font-size:28px;margin:6px 0">${msg}</h3>
+   <div class="strip" style="margin-top:14px"><span class="chip">Tačno <b>${Q.correct}/${Q.total}</b></span><span class="chip">Poeni <b>${Q.score}</b></span><span class="chip">Najduži niz <b>${Q.best}🔥</b></span><span class="chip">Rekord <b>${Math.max(bestPrev,Q.score)}</b></span></div>
+   ${miss?`<div class="miss"><div style="background:none;border:0;padding:0;font-weight:800">Ovo ponovi:</div>${miss}</div>`:'<p class="mt-s">Bez ijedne greške. Neverovatno! 🏆</p>'}
+   <div class="ctrls" style="justify-content:center"><button class="cta" id="qAgain">↺ Igraj ponovo</button><button class="cta ghost" id="qSet">Podešavanja</button></div>`;
+  $('#qAgain').onclick=startQuiz; $('#qSet').onclick=quitQuiz;
+  if(g>=4) confetti(220); refreshHome(); updateBest();
+}
+function updateBest(){ const b=S.get('qbest',0); $('#qBest').textContent=b?`Tvoj rekord: ${b} poena · najviše tačnih: ${S.get('qbestc',0)}/10`:''; }
+function flashStreak(n){ const s=$('#streak'); s.textContent=`${n}x NIZ 🔥`; s.style.color=pick(['#f3c77f','#ff7a9a','#4fd6c6','#a08bff']); s.classList.remove('go'); void s.offsetWidth; s.classList.add('go'); }
+
+/* timer bar */
+function tickTimer(){ if(Q.active && !Q.answered && Q.started){ const el=(performance.now()-Q.t0)/1000; $('#qTimer').style.transform=`scaleX(${Math.max(0,1-el/Math.max(8,Q.opts.clip))})` } }
+
+/* =========================================================
+   VISUALIZERS (vinyl + mini)
+   ========================================================= */
+let rot=0;
+function drawVinyl(){
+  const cv=$('#vinyl'); if(!cv || cv.offsetParent===null) return; const g=cv.getContext('2d'); const W2=cv.width, H2=cv.height, cx=W2/2, cy=H2/2;
+  g.clearRect(0,0,W2,H2);
+  const p=Q.cur, col=p?COMPOSERS[p.c].c:'#f3c77f'; const reveal=Q.answered;
+  const R=W2*.33; const b=bands(72);
+  // bars
+  for(let i=0;i<72;i++){ const a=i/72*Math.PI*2-Math.PI/2; const v=b[i]; const len=12+v*W2*.13;
+    const x1=cx+Math.cos(a)*(R+14), y1=cy+Math.sin(a)*(R+14), x2=cx+Math.cos(a)*(R+14+len), y2=cy+Math.sin(a)*(R+14+len);
+    g.strokeStyle=`hsla(${(i*5+performance.now()/40)%360},90%,${60+v*15}%,${.35+v*.65})`; g.lineWidth=7; g.lineCap='round';
+    g.beginPath(); g.moveTo(x1,y1); g.lineTo(x2,y2); g.stroke(); }
+  // glow
+  const avg=b.reduce((s,x)=>s+x,0)/b.length; const gl=g.createRadialGradient(cx,cy,R*.4,cx,cy,R*1.25); gl.addColorStop(0,'rgba(0,0,0,0)'); gl.addColorStop(1,col+'00');
+  g.save(); g.shadowColor=col; g.shadowBlur=30+avg*60;
+  // record
+  if(!A.el.paused) rot+=0.012+avg*.02; g.translate(cx,cy); g.rotate(rot);
+  const rg=g.createRadialGradient(0,0,10,0,0,R); rg.addColorStop(0,'#1c1a24'); rg.addColorStop(1,'#050407');
+  g.fillStyle=rg; g.beginPath(); g.arc(0,0,R,0,Math.PI*2); g.fill(); g.restore();
+  g.save(); g.translate(cx,cy); g.rotate(rot);
+  for(let r=R*.42;r<R*.97;r+=5){ g.strokeStyle=`rgba(255,255,255,${.03+((r|0)%3)*.012})`; g.lineWidth=1; g.beginPath(); g.arc(0,0,r,0,Math.PI*2); g.stroke(); }
+  // shine
+  g.strokeStyle='rgba(255,255,255,.12)'; g.lineWidth=R*.5; g.beginPath(); g.arc(0,0,R*.7,-.5,-.1); g.stroke();
+  // label
+  const lg=g.createLinearGradient(-R*.38,-R*.38,R*.38,R*.38); lg.addColorStop(0,reveal?col:'#f3c77f'); lg.addColorStop(1,reveal?'#ffffff':'#ff7a9a');
+  g.fillStyle=lg; g.beginPath(); g.arc(0,0,R*.36,0,Math.PI*2); g.fill();
+  g.fillStyle='#120f1d'; g.textAlign='center'; g.textBaseline='middle';
+  if(reveal&&p){ g.font=`900 ${R*.2}px "Playfair Display",serif`; g.fillText(COMPOSERS[p.c].short,0,-R*.04); g.font=`600 ${R*.075}px Inter,sans-serif`; g.fillText(p.title.length>22?p.title.slice(0,21)+'…':p.title,0,R*.13); }
+  else { g.font=`900 ${R*.3}px "Playfair Display",serif`; g.fillText('?',0,R*.02); }
+  g.fillStyle='#09080f'; g.beginPath(); g.arc(0,0,R*.035,0,Math.PI*2); g.fill();
+  g.restore();
+}
+function drawMini(){
+  const cv=$('#miniViz'); if(!$('#mini').classList.contains('show')) return; const g=cv.getContext('2d'); const w=cv.width,h=cv.height; g.clearRect(0,0,w,h);
+  const b=bands(24); const p=learnState.cur?pieceById(learnState.cur):null; const col=p?COMPOSERS[p.c].c:'#f3c77f';
+  g.fillStyle='rgba(255,255,255,.05)'; g.beginPath(); g.roundRect?g.roundRect(0,0,w,h,26):g.rect(0,0,w,h); g.fill();
+  const bw=w/24; for(let i=0;i<24;i++){ const v=b[i]; const bh=6+v*(h-24); g.fillStyle=col; g.globalAlpha=.45+v*.55; g.fillRect(i*bw+1,(h-bh)/2,bw-2,bh); } g.globalAlpha=1;
+}
+
+/* floating notes background (home only) */
+const NF={cv:$('#notesfx'),n:[]};
+function sizeNF(){ NF.cv.width=innerWidth; NF.cv.height=innerHeight }
+addEventListener('resize',sizeNF); sizeNF();
+for(let i=0;i<22;i++) NF.n.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,s:14+Math.random()*26,v:.2+Math.random()*.5,g:pick(['♪','♫','♩','♬','𝄞']),a:Math.random()*6,o:.05+Math.random()*.12});
+function drawNotes(){ const g=NF.cv.getContext('2d'); g.clearRect(0,0,NF.cv.width,NF.cv.height); if(document.body.dataset.theme==='theory') return;
+  for(const n of NF.n){ n.y-=n.v; n.a+=.01; if(n.y<-40){n.y=innerHeight+40;n.x=Math.random()*innerWidth} g.globalAlpha=n.o; g.fillStyle='#fff'; g.font=`${n.s}px serif`; g.fillText(n.g,n.x+Math.sin(n.a)*20,n.y) } g.globalAlpha=1; }
+
+/* confetti */
+const CF={cv:$('#confetti'),p:[]};
+function confetti(n=120,x=innerWidth/2,y=innerHeight*.35){ for(let i=0;i<n;i++) CF.p.push({x,y,vx:(Math.random()-.5)*16,vy:-Math.random()*14-4,g:.35,s:4+Math.random()*6,c:pick(['#f3c77f','#ff7a9a','#4fd6c6','#a08bff','#76b0ff','#3ee08f']),r:Math.random()*6,vr:(Math.random()-.5)*.4,l:120+Math.random()*60}) }
+function burst(el){ const r=el.getBoundingClientRect(); confetti(40,r.left+r.width/2,r.top+r.height/2) }
+function drawConfetti(){ const c=CF.cv; if(c.width!==innerWidth){c.width=innerWidth;c.height=innerHeight} const g=c.getContext('2d'); g.clearRect(0,0,c.width,c.height);
+  CF.p=CF.p.filter(p=>p.l>0); for(const p of CF.p){ p.vy+=p.g; p.vx*=.99; p.x+=p.vx; p.y+=p.vy; p.r+=p.vr; p.l--; g.save(); g.translate(p.x,p.y); g.rotate(p.r); g.globalAlpha=Math.min(1,p.l/40); g.fillStyle=p.c; g.fillRect(-p.s/2,-p.s/4,p.s,p.s/2); g.restore(); } }
+
+/* sound effects */
+let sfxCtx=null;
+function sfx(ok){ try{ const c=A.ctx||(sfxCtx||(sfxCtx=new (window.AudioContext||window.webkitAudioContext)())); if(c.state==='suspended') c.resume();
+  const notes=ok?[659.25,987.77]:[220,174.6]; notes.forEach((f,i)=>{ const o=c.createOscillator(), g=c.createGain(); o.type=ok?'triangle':'sawtooth'; o.frequency.value=f; const t=c.currentTime+i*.11;
+   g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(ok?.16:.07,t+.02); g.gain.exponentialRampToValueAtTime(.001,t+.32); o.connect(g); g.connect(c.destination); o.start(t); o.stop(t+.35); }); }catch(e){} }
+
+function loop(){ drawVinyl(); drawMini(); drawNotes(); drawConfetti(); tickTimer(); requestAnimationFrame(loop) }
+
+/* =========================================================
+   THEORY: read
+   ========================================================= */
+function renderRead(){
+  const done=S.get('learned',{});
+  $('#qaList').innerHTML=QA.map((x,i)=>`<div class="qa ${done[i]?'done':''}" id="qa-${i}"><button class="qa-h" data-qa="${i}"><span class="num">${done[i]?'✓':i+1}</span><span class="q">${x.q}<small>${x.qc}</small></span><span class="arr">⌄</span></button>
+   <div class="qa-b"><div class="ansr">${x.body}</div><div class="keys">${x.keys.map(k=>`<span>${k}</span>`).join('')}</div><div class="mnemo">${x.mnemo}</div>
+   <button class="learned ${done[i]?'on':''}" data-learn="${i}">${done[i]?'✓ Naučeno':'Označi kao naučeno'}</button></div></div>`).join('');
+  updateReadProg();
+}
+function updateReadProg(){ const d=S.get('learned',{}); const n=QA.filter((_,i)=>d[i]).length; $('#readProg').style.width=n/QA.length*100+'%'; $('#readTxt').textContent=`${n}/10 naučeno`; }
+$('#qaList').addEventListener('click',e=>{
+  const h=e.target.closest('[data-qa]'); if(h){ $('#qa-'+h.dataset.qa).classList.toggle('open'); return; }
+  const l=e.target.closest('[data-learn]'); if(l){ const i=+l.dataset.learn; const d=S.get('learned',{}); d[i]=!d[i]; S.set('learned',d);
+    const card=$('#qa-'+i); card.classList.toggle('done',d[i]); $('.num',card).textContent=d[i]?'✓':i+1; l.classList.toggle('on',d[i]); l.textContent=d[i]?'✓ Naučeno':'Označi kao naučeno';
+    if(d[i]){ burst(l); sfx(true); } updateReadProg(); refreshHome(); if(Object.values(d).filter(Boolean).length===10 && d[i]) confetti(200); }
+});
+$('#openAll').onclick=e=>{ const all=$$('.qa'); const open=all.some(q=>!q.classList.contains('open')); all.forEach(q=>q.classList.toggle('open',open)); e.target.textContent=open?'Zatvori sve':'Otvori sve'; };
+
+/* flashcards */
+const FC={deck:[],known:0,flipped:false};
+function startFC(){ FC.deck=shuffle(QA.map((_,i)=>i)); FC.known=0; FC.flipped=false; renderFC(); }
+function renderFC(){
+  const box=$('#fcBox');
+  if(!FC.deck.length){ box.innerHTML=`<div class="card center"><div style="font-size:60px">🎉</div><h3 style="font-family:var(--serif);font-size:30px">Sve kartice znaš!</h3><p class="muted">Sad probaj usmeno odgovaranje, to je najbliže pravom testu.</p><div class="ctrls" style="justify-content:center"><button class="cta" id="fcAgain">↺ Ponovo</button></div></div>`; $('#fcAgain').onclick=startFC; confetti(160); return; }
+  const i=FC.deck[0], x=QA[i];
+  box.innerHTML=`<div class="toolbar" style="max-width:640px;margin:0 auto 16px"><div class="prog"><i style="width:${FC.known/10*100}%"></i></div><span class="tiny">${FC.known}/10 znam · ostalo ${FC.deck.length}</span></div>
+  <div class="fc-wrap"><div class="fc" id="fc"><div class="face front"><div class="n">PITANJE ${i+1}</div><h3>${x.q}</h3><div class="tiny">Klikni da okreneš 👆</div></div>
+  <div class="face back"><div class="n" style="color:var(--ochre);font-weight:800;font-family:var(--serif)">ODGOVOR ${i+1}</div><ul>${x.short.map(s=>`<li>${s}</li>`).join('')}</ul><div class="mnemo">${x.mnemo}</div></div></div>
+  <div class="fc-btns"><button class="no-btn" id="fcNo">😕 Ne znam</button><button class="yes-btn" id="fcYes">😎 Znam</button></div></div>`;
+  $('#fc').onclick=()=>$('#fc').classList.toggle('flip');
+  $('#fcNo').onclick=()=>{ FC.deck.push(FC.deck.shift()); sfx(false); renderFC(); };
+  $('#fcYes').onclick=()=>{ FC.deck.shift(); FC.known++; sfx(true); renderFC(); };
+}
+
+/* oral */
+const OR={i:null,t:null,left:60,scores:S.get('oral',{})};
+function oralNew(){
+  clearInterval(OR.t); const pool=QA.map((_,i)=>i).filter(i=>i!==OR.i); OR.i=pick(pool); OR.left=60; const x=QA[OR.i];
+  $('#oralBox').innerHTML=`<div class="tiny" style="font-weight:800;letter-spacing:1px;color:var(--ochre)">🎤 USMENO ODGOVARANJE · PITANJE ${OR.i+1}</div><div class="q">${x.q}</div>
+  <div class="clock"><div class="ring" id="oRing"><span id="oSec">60</span></div><div><b>Odgovori naglas</b>, kao da te profesorka prozvala.<div class="tiny">Imaš oko minut. Kad završiš, proveri šta si rekla.</div></div></div>
+  <div class="ctrls"><button class="cta sm" id="oShow">✅ Proveri odgovor</button><button class="cta ghost sm" id="oSkip">↻ Drugo pitanje</button></div><div id="oCheck"></div>`;
+  OR.t=setInterval(()=>{ OR.left--; const r=$('#oRing'); if(!r){clearInterval(OR.t);return} r.style.setProperty('--p',OR.left/60*100); $('#oSec').textContent=Math.max(0,OR.left); if(OR.left<=0){clearInterval(OR.t); showOral()} },1000);
+  $('#oShow').onclick=showOral; $('#oSkip').onclick=oralNew;
+}
+function showOral(){
+  clearInterval(OR.t); const x=QA[OR.i]; if($('#oCheck').innerHTML) return;
+  $('#oCheck').innerHTML=`<p class="mt-s" style="font-weight:700">Štikliraj sve što si pomenula:</p><div class="checks">${x.points.map((p,k)=>`<button class="check" data-k="${k}"><span class="bx"></span><span>${p}</span></button>`).join('')}</div>
+   <div class="ctrls"><button class="cta sm" id="oDone">Oceni me</button></div><div id="oRes"></div>`;
+  $$('.check').forEach(c=>c.onclick=()=>{c.classList.toggle('on'); $('.bx',c).textContent=c.classList.contains('on')?'✓':''});
+  $('#oDone').onclick=()=>{ const n=$$('.check.on').length, t=x.points.length, pct=Math.round(n/t*100); const g=pct>=85?5:pct>=65?4:pct>=50?3:pct>=30?2:1;
+    OR.scores[OR.i]=Math.max(OR.scores[OR.i]||0,pct); S.set('oral',OR.scores);
+    $('#oRes').innerHTML=`<div class="explain"><b>Pokrila si ${n}/${t} tačaka (${pct}%) → ocena ${g}.</b> ${g>=4?'Super, tako se odgovara! 💪':'Pročitaj ponovo ovo pitanje u „Uči", pa probaj još jednom.'}<div class="ansr" style="margin-top:10px">${x.body}</div></div>
+     <div class="ctrls"><button class="cta sm" id="oNext">Sledeće pitanje →</button></div>`;
+    if(g>=4){ sfx(true); confetti(90) } else sfx(false); $('#oNext').onclick=oralNew; refreshHome(); };
+}
+
+/* theory quiz */
+const TQS={list:[],i:0,score:0};
+function tqStart(){ TQS.list=shuffle(TQ).slice(0,10).map(q=>{const opts=shuffle(q[1].map((t,k)=>({t,ok:k===q[2]})));return {q:q[0],opts,ex:q[3]}}); TQS.i=0; TQS.score=0; tqRender(); }
+function tqRender(){
+  const b=$('#tqBox');
+  if(TQS.i>=TQS.list.length){ const s=TQS.score; const best=S.get('tqbest',0); if(s>best) S.set('tqbest',s);
+    b.innerHTML=`<div class="center"><div class="tiny">Rezultat</div><div class="grade">${s}/10</div><h3 style="font-family:var(--serif);font-size:26px">${s>=9?'Savršeno! 🏆':s>=7?'Odlično! 👏':s>=5?'Solidno, još malo vežbe.':'Pročitaj „Uči" pa opet 💪'}</h3><p class="tiny">Rekord: ${Math.max(best,s)}/10</p><div class="ctrls" style="justify-content:center"><button class="cta" id="tqAgain">↺ Novi kviz (nova pitanja)</button></div></div>`;
+    $('#tqAgain').onclick=tqStart; if(s>=8) confetti(180); refreshHome(); return; }
+  const x=TQS.list[TQS.i];
+  b.innerHTML=`<div class="toolbar"><div class="prog"><i style="width:${TQS.i/10*100}%"></i></div><span class="tiny">Pitanje ${TQS.i+1}/10 · tačno ${TQS.score}</span></div>
+   <div class="qtitle">${x.q}</div><div class="opts">${x.opts.map((o,k)=>`<button class="ans" data-k="${k}"><span>${o.t}</span></button>`).join('')}</div><div id="tqEx"></div>`;
+  $$('.ans',b).forEach(btn=>btn.onclick=()=>{ const o=x.opts[+btn.dataset.k]; $$('.ans',b).forEach((bb,k)=>{bb.disabled=true; if(x.opts[k].ok) bb.classList.add('ok')});
+    if(o.ok){TQS.score++; sfx(true); burst(btn)} else {btn.classList.add('no'); sfx(false)}
+    $('#tqEx').innerHTML=`<div class="explain">${o.ok?'✅':'❌'} ${x.ex}</div><div class="ctrls"><button class="cta sm" id="tqNext">${TQS.i<9?'Dalje →':'Rezultat 🏆'}</button></div>`;
+    $('#tqNext').onclick=()=>{TQS.i++; tqRender()}; });
+}
+
+/* match pairs */
+const MT={sel:null,left:0,t0:0,miss:0};
+function matchStart(){
+  const set=shuffle(PAIRS).slice(0,6); MT.left=set.length; MT.sel=null; MT.t0=Date.now(); MT.miss=0;
+  const L=shuffle(set.map((p,i)=>({t:p[0],i}))), R=shuffle(set.map((p,i)=>({t:p[1],i})));
+  $('#matchBox').innerHTML=`<div class="toolbar" style="max-width:860px;margin:0 auto 16px"><span class="tiny">Spoji levo sa desnim. Klikni jedno pa drugo. 🧩</span><button class="cta ghost sm" id="mNew">↻ Novi set</button></div>
+   <div class="match"><div class="col">${L.map(x=>`<button class="mt" data-s="L" data-i="${x.i}">${x.t}</button>`).join('')}</div><div class="col">${R.map(x=>`<button class="mt" data-s="R" data-i="${x.i}">${x.t}</button>`).join('')}</div></div><div id="mRes"></div>`;
+  $('#mNew').onclick=matchStart;
+  $$('.mt').forEach(b=>b.onclick=()=>{
+    if(b.classList.contains('done')) return;
+    if(!MT.sel || MT.sel.dataset.s===b.dataset.s){ if(MT.sel) MT.sel.classList.remove('sel'); MT.sel=b; b.classList.add('sel'); return; }
+    const a=MT.sel; MT.sel=null; a.classList.remove('sel');
+    if(a.dataset.i===b.dataset.i){ [a,b].forEach(x=>{x.classList.add('done');x.disabled=true}); sfx(true); burst(b); MT.left--;
+      if(!MT.left){ const s=Math.round((Date.now()-MT.t0)/1000); $('#mRes').innerHTML=`<div class="card center" style="max-width:860px;margin:18px auto"><h3 style="font-family:var(--serif);font-size:28px">Sve spojeno za ${s} s! 🎉</h3><p class="muted">Greške: ${MT.miss}</p><div class="ctrls" style="justify-content:center"><button class="cta" id="mAgain">Još jedan set</button></div></div>`; $('#mAgain').onclick=matchStart; confetti(150); } }
+    else { MT.miss++; sfx(false); [a,b].forEach(x=>{x.classList.add('no'); setTimeout(()=>x.classList.remove('no'),450)}); }
+  });
+}
+
+/* timeline */
+function renderTL(){ $('#tl').innerHTML=TIMELINE.map(t=>`<div class="ev"><div class="y">${t[0]}</div><p>${t[1]}</p></div>`).join('') }
+let tlObs=null;
+function observeTimeline(){ if(!('IntersectionObserver' in window)){ $$('.ev').forEach(e=>e.classList.add('seen')); return }
+  if(!tlObs) tlObs=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('seen') }),{threshold:.2});
+  $$('.ev').forEach(e=>tlObs.observe(e)); }
+
+/* =========================================================
+   HOME PROGRESS
+   ========================================================= */
+function refreshHome(){
+  const known=Object.values(S.get('known',{})).filter(Boolean).length; const qb=S.get('qbestc',0);
+  const lp=Math.round((known/PIECES.length*.5 + qb/10*.5)*100);
+  const learned=Object.values(S.get('learned',{})).filter(Boolean).length; const tqb=S.get('tqbest',0);
+  const tp=Math.round((learned/10*.5 + tqb/10*.5)*100);
+  [['#ringL',lp],['#ringT',tp]].forEach(([s,v])=>{const r=$(s); r.style.setProperty('--p',v); $('span',r).textContent=v+'%'});
+  $('#homeStats').innerHTML=`<span class="chip">🎧 Prepoznaješ <b>${known}/9</b></span><span class="chip">🎯 Rekord kviza <b>${S.get('qbest',0)}</b></span><span class="chip">📖 Naučeno <b>${learned}/10</b></span><span class="chip">✅ Teorija kviz <b>${tqb}/10</b></span>`;
+}
+
+/* credits */
+$('#credits').innerHTML=ALLP.flatMap(p=>p.v.map(v=>`<li>${COMPOSERS[p.c].short} - ${p.title} (${v.l}): ${v.cr}</li>`)).join('')+'<li>Svi snimci se puštaju direktno sa Wikimedia Commons.</li>';
+
+/* init */
+renderLearn(); renderCheat(); renderRead(); startFC(); oralNew(); tqStart(); matchStart(); renderTL(); refreshHome(); updateBest();
+const h=location.hash.replace('#',''); if(h==='slusni') go('listen',false); else if(h==='teorija') go('theory',false);
+addEventListener('keydown',e=>{ if(e.code==='Space' && A.owner==='learn' && $('#mini').classList.contains('show') && !/INPUT|TEXTAREA|BUTTON/.test(document.activeElement.tagName)){ e.preventDefault(); $('#miniPlay').click(); } });
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
