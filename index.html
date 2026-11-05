@@ -483,160 +483,195 @@ const pieceById=id=>ALLP.find(p=>p.id===id);
    ========================================================= */
 const QA=[
  {q:'Šta obuhvata pojam „stara srpska muzika" u periodizaciji?',qc:'Шта обухвата појам „стара српска музика" у периодизацији?',
-  body:`<p>To je <mark>najstariji period srpske muzičke istorije</mark>: od <mark>doseljenja Slovena (Srba) na Balkan (VI-VII vek)</mark> pa sve do <mark>kraja XVIII veka</mark>, kada počinje nova, građanska srpska muzika (XIX vek).</p>
-  <ul><li>Obuhvata muziku <mark>srednjovekovne srpske države</mark> (do pada Smedereva 1459) i muziku <mark>pod turskom vlašću</mark>.</li>
-  <li>Dve oblasti: <mark>crkvena (duhovna) muzika</mark>, jednoglasno vokalno pojanje u okviru vizantijske kulture, i <mark>svetovna muzika</mark> (dvorska, vojna, narodna).</li>
-  <li>Muzika je pripadala <mark>vizantijskom kulturnom krugu</mark>.</li>
-  <li>Znamo je iz izvora: vizantijski hroničari, žitija i tipici, dubrovački arhivi, freske i minijature, a tek od XV veka i rukopisi sa neumama (notama).</li></ul>`,
-  keys:['VI/VII - kraj XVIII veka','crkvena + svetovna','vizantijski krug','srednji vek + turski period'],
-  short:['Najstariji period srpske muzike','Od doseljenja Slovena (VI-VII v.) do kraja XVIII veka','Srednji vek + period pod Turcima','Crkvena (pojanje) i svetovna muzika, vizantijski krug'],
-  points:['Najstariji period srpske muzike','Od doseljenja Slovena (VI-VII vek)','Do kraja XVIII veka','Srednjovekovna država + turski period','Crkvena i svetovna muzika','Vizantijski kulturni krug'],
-  mnemo:'<b>Zapamti:</b> „Od Slovena do XVIII veka", posle toga dolazi Mokranjčevo doba i nova srpska muzika.'},
+  body:`<p>Pod odrednicom <mark>stara srpska muzika</mark> podrazumeva se dug period njenog razvoja: od <mark>doseljavanja Slovena na Balkansko poluostrvo u VI-VII veku do kraja XVIII veka</mark>.</p>
+  <ul><li>Taj period se <mark>poklapa sa evropskom srednjovekovnom, renesansnom, baroknom i klasičnom muzikom</mark>.</li>
+  <li>Ali u periodizaciji srpske muzike tog doba, zbog posebnih istorijskih prilika, <mark>nije uobičajena primena stilskih kriterijuma</mark> (kao na Zapadu).</li>
+  <li>Saznanja su i dalje <mark>vrlo skromna</mark>: malo pisanih izvora i notnih rukopisa, dokumenti su u nedostupnim manastirskim i stranim arhivima, a malo je i istraživača.</li>
+  <li>Istraživanja počinju tek <mark>posle Drugog svetskog rata</mark>. Podsticaj su dali <mark>Kosta Manojlović</mark> (crkvena muzika) i <mark>Stana Đurić-Klajn</mark>, koja je <mark>1962.</mark> napisala <mark>prvu istoriju srpske muzike</mark>.</li>
+  <li>Zato se stara srpska muzika proučava kroz <mark>tematske celine</mark>: izvori; mesto folklorne tradicije; svetovna muzička tradicija srednjeg veka; crkvena muzička tradicija srednjeg veka; srpska muzika u XVIII veku.</li>
+  <li>„Srpska muzika" ne znači etničku čistotu: Srbi su vekovima živeli izmešani sa drugim narodima, pa su i <mark>geografski okviri elastični</mark> (od Hilandara, Peći i Dečana do Sentandreje, Temišvara, Rusije i Ukrajine).</li></ul>`,
+  keys:['VI-VII vek do kraja XVIII veka','srednji vek, renesansa, barok, klasika','bez stilskih kriterijuma','Stana Đurić-Klajn 1962','tematske celine'],
+  short:['Od doseljavanja Slovena (VI-VII v.) do kraja XVIII veka','Poklapa se sa evropskim srednjim vekom, renesansom, barokom i klasikom','Ne primenjuju se stilski kriterijumi, deli se na tematske celine','Istraživanja posle 2. svetskog rata: Kosta Manojlović, Stana Đurić-Klajn (1962)'],
+  points:['Dug period: od doseljavanja Slovena (VI-VII vek)','Do kraja XVIII veka','Poklapa se sa srednjovekovnom, renesansnom, baroknom i klasičnom muzikom','Ne primenjuju se stilski kriterijumi','Saznanja su skromna (malo izvora i rukopisa)','Stana Đurić-Klajn, prva istorija srpske muzike 1962.','Tematske celine (izvori, folklor, svetovna, crkvena, XVIII vek)'],
+  mnemo:'<b>Zapamti:</b> „Od Slovena do XVIII veka" = jedan dugi period, a ne epohe po stilovima kao na Zapadu.'},
  {q:'Koja je bila najznačajnija prekretnica u razvoju muzike na južnoslovenskim prostorima?',qc:'Која је била најзначајнија прекретница у развоју музике на јужнословенским просторима?',
-  body:`<p>Najveća prekretnica je <mark>primanje hrišćanstva (pokrštavanje) u IX veku</mark> i rad <mark>Ćirila i Metodija</mark>.</p>
-  <ul><li>Braća iz Soluna su 863. (Moravska misija) stvorila <mark>slovensko pismo (glagoljicu)</mark> i prevela crkvene knjige sa grčkog.</li>
-  <li>Uvela su <mark>bogosluženje na slovenskom (narodnom) jeziku</mark>.</li>
-  <li><mark>Grčke (vizantijske) melodije su prilagođene slovenskim tekstovima</mark>, tako nastaje crkvena muzika na slovenskom jeziku.</li>
-  <li>Od tada muzika Južnih Slovena ulazi u <mark>vizantijski kulturni krug</mark>; pojanje je jednoglasno, prvo slogovno (silabično), a kasnije ukrašeno (melizmatično).</li></ul>`,
-  keys:['pokrštavanje IX vek','Ćirilo i Metodije 863','bogosluženje na slovenskom','vizantijske melodije + slovenski tekst'],
-  short:['Pokrštavanje Južnih Slovena (IX vek)','Ćirilo i Metodije: pismo i prevod knjiga','Bogosluženje na slovenskom jeziku','Vizantijske melodije na slovenski tekst'],
-  points:['Primanje hrišćanstva u IX veku','Ćirilo i Metodije (863)','Slovensko pismo i prevod crkvenih knjiga','Bogosluženje na slovenskom jeziku','Grčke melodije prilagođene slovenskom tekstu','Ulazak u vizantijski kulturni krug'],
-  mnemo:'<b>Zapamti:</b> prekretnica = <b>krst + slovo</b>: hrišćanstvo i slovensko pismo, pa se Bogu peva na svom jeziku.'},
+  body:`<p>Najznačajnija prekretnica nastupila je sa <mark>pokrštavanjem južnoslovenskih plemena, započetim u IX veku</mark>.</p>
+  <ul><li><mark>Srbi, Makedonci i Bugari</mark> veru primaju <mark>sa Istoka, iz vizantijske crkve</mark>, a u pokrštavanju <mark>Slovenaca i Hrvata</mark> glavnu ulogu imaju <mark>rimski misionari</mark>.</li>
+  <li>To je odredilo njihovu kasniju vezanost za <mark>Istočnu ili Zapadnu crkvu</mark>, što postaje naročito važno posle <mark>velike šizme (1054)</mark>. Granica Istoka i Zapada prošla je njihovim zemljama.</li>
+  <li>Kod Srba, Makedonaca i Bugara <mark>služba Božja i pojanje preuzeti su iz vizantijske kulture</mark>, a u liturgiji se isprva koristio <mark>grčki jezik</mark>.</li>
+  <li>Vrlo brzo počinje <mark>slavjanizacija crkvene službe</mark>: zahvaljujući učenicima <mark>Ćirila i Metodija</mark> peva se na <mark>staroslovenskom jeziku</mark>.</li></ul>`,
+  keys:['pokrštavanje, IX vek','Srbi, Makedonci, Bugari: Vizantija','Slovenci, Hrvati: Rim','šizma 1054','slavjanizacija službe'],
+  short:['Pokrštavanje južnoslovenskih plemena od IX veka','Srbi, Makedonci, Bugari: iz vizantijske crkve (Istok)','Slovenci i Hrvati: rimski misionari (Zapad); šizma 1054','Pojanje preuzeto iz Vizantije (grčki), pa slavjanizacija službe'],
+  points:['Pokrštavanje južnoslovenskih plemena','Počelo u IX veku','Srbi, Makedonci i Bugari iz vizantijske crkve','Slovenci i Hrvati preko rimskih misionara','Velika šizma 1054, granica Istoka i Zapada','Pojanje iz Vizantije, pa slavjanizacija službe'],
+  mnemo:'<b>Zapamti:</b> prekretnica = krštenje. Srbi gledaju na <b>Istok</b> (Carigrad), Hrvati i Slovenci na <b>Zapad</b> (Rim).'},
  {q:'Kako su Kliment i Naum uticali na razvoj crkvenog pojanja i škola u Ohridu i Preslavu?',qc:'Како су Климент и Наум утицали на развој црквеног појања и школа у Охриду и Преславу?',
-  body:`<p><mark>Kliment i Naum</mark> su bili najistaknutiji <mark>učenici Ćirila i Metodija</mark>. Kada su proterani iz Moravske (885/886), došli su u Bugarsku kod kneza Borisa i nastavili rad svojih učitelja.</p>
-  <ul><li><mark>Kliment</mark> osniva <mark>Ohridsku školu (886)</mark>, „prvi slovenski univerzitet". Obrazovao je hiljade učenika, sveštenika i pojaca. Pisao je <mark>crkvene pesme (kanone, himne, molitve)</mark> u čast svetitelja, pa se smatra prvim slovenskim himnografom.</li>
-  <li><mark>Naum</mark> radi u <mark>Preslavskoj školi</mark> (886-893), a zatim nasleđuje Klimenta u Ohridu; osnovao je manastir Sv. Nauma na Ohridskom jezeru.</li>
-  <li>Značaj: škole su <mark>ustalile pojanje na slovenskom jeziku</mark> po vizantijskom osmoglasju, <mark>školovale pojce</mark>, prevodile i pisale bogoslužbene knjige, a odatle se crkveno pojanje <mark>širilo na sve južnoslovenske zemlje, pa i na Srbiju</mark>.</li></ul>`,
-  keys:['učenici Ćirila i Metodija','Kliment = Ohrid','Naum = Preslav','škole za pojce','širenje pojanja'],
-  short:['Učenici Ćirila i Metodija','Kliment: Ohridska škola (886), pisao crkvene pesme','Naum: Preslavska škola, pa Ohrid','Škole obučavale pojce i širile slovensko pojanje'],
-  points:['Učenici Ćirila i Metodija','Kliment osniva Ohridsku školu','Naum radi u Preslavskoj školi','Kliment piše crkvene pesme (kanone, himne)','Škole obrazuju sveštenike i pojce','Pojanje na slovenskom se širi i na Srbiju'],
-  mnemo:'<b>Zapamti:</b> <b>K</b>liment = <b>O</b>hrid (KO je prvi?), <b>N</b>aum = <b>P</b>reslav pa Ohrid.'},
+  body:`<p><mark>Kliment (?-917) i Naum (?-910)</mark> bili su <mark>učenici Ćirila i Metodija</mark>. Osnovali su <mark>škole u Ohridu i Preslavu</mark> (istočna Bugarska), a njihova delatnost je <mark>ostavila traga na celom južnoslovenskom prostoru</mark>.</p>
+  <ul><li>Njihov rad je deo <mark>slavjanizacije crkvene službe</mark>: umesto na grčkom, poje se na staroslovenskom.</li>
+  <li><mark>Kliment Ohridski</mark> bio je <mark>pesnik i muzičar</mark>. Podučavao je sveštenike <mark>liturgijskom pojanju, notaciji i tadašnjoj vizantijskoj teoriji</mark>.</li>
+  <li>Sačuvana su pohvalna svedočanstva o <mark>dobrim pojcima</mark> iz njegove škole, a imao je <mark>više od tri hiljade učenika</mark>.</li>
+  <li>Muzičku praksu je predstavljalo <mark>jednoglasno pevanje na staroslovenskom jeziku, zajedničko za sve Južne Slovene</mark>.</li>
+  <li>Kasnije, kada Srpska crkva dobija samostalnost (<mark>1219</mark>), u pojanje ulaze i srpske osobine: <mark>Sveti Sava</mark> sa učenicima sastavlja <mark>službu Svetom Simeonu</mark> po uzoru na <mark>osmoglasnik</mark>, sa oznakama glasova. Ta tradicija traje do XVIII veka, kada se objavljuje u <mark>Srbuljama</mark>.</li></ul>`,
+  keys:['učenici Ćirila i Metodija','Ohrid i Preslav','Kliment: pesnik i muzičar','pojanje, notacija, vizantijska teorija','3000+ učenika','jednoglasno, staroslovenski'],
+  short:['Učenici Ćirila i Metodija: Kliment (?-917) i Naum (?-910)','Osnovali škole u Ohridu i Preslavu (istočna Bugarska)','Kliment: pesnik i muzičar, učio sveštenike pojanju, notaciji i vizantijskoj teoriji; 3000+ učenika','Jednoglasno pevanje na staroslovenskom, zajedničko za sve Južne Slovene'],
+  points:['Učenici Ćirila i Metodija','Škole u Ohridu i Preslavu (istočna Bugarska)','Trag na celom južnoslovenskom prostoru','Kliment je bio pesnik i muzičar','Učio pojanju, notaciji i vizantijskoj teoriji','Više od 3000 učenika, dobri pojci','Jednoglasno pevanje na staroslovenskom'],
+  mnemo:'<b>Zapamti:</b> <b>K</b>liment = Ohrid + <b>3000</b> učenika. <b>N</b>aum = Preslav. Naum umire prvi (910), Kliment 7 godina kasnije (917).'},
  {q:'Koja grupa aerofonih instrumenata je najbrojnija u umetnosti srednjovekovne Srbije?',qc:'Која група аерофон инструмената је најбројнија у уметности средњовековне Србије?',
-  body:`<p>Aerofoni su <mark>duvački instrumenti</mark> (zvuk nastaje treperenjem vazduha). Na freskama, minijaturama i ikonama srednjovekovne Srbije <mark>najbrojnija grupa su trube</mark>: <mark>busine i rogovi različitih veličina</mark>.</p>
-  <ul><li><mark>Busine</mark> su duge, ravne, kovane (metalne) trube; javlja se i savijena (S) truba.</li>
-  <li><mark>Rogovi</mark> su kraći, od životinjskog roga, drveta ili metala.</li>
-  <li>Slikaju se najčešće na scenama <mark>Rođenja Hristovog, Ruganja Hristu, Strašnog suda</mark> (anđeli trube, npr. Dečani) i kao ilustracije psalama.</li>
-  <li>Ostali aerofoni su ređi: svirale, dvojnice, gajde, zurle, kaval.</li></ul>`,
-  keys:['aerofoni = duvački','trube: busine + rogovi','freske, minijature, ikone'],
-  short:['Aerofoni = duvački instrumenti','Najbrojnije: trube (busine) i rogovi','Busine = duge kovane trube','Scene: Rođenje, Ruganje Hristu, Strašni sud, psalmi'],
-  points:['Aerofoni su duvački instrumenti','Najbrojnije su trube','Busine (duge kovane trube)','Rogovi različitih veličina','Scene Rođenja, Ruganja Hristu, psalmi','Ostali (svirale, gajde) su ređi'],
-  mnemo:'<b>Zapamti:</b> na freskama anđeli <b>trube</b>, zato su trube (busine i rogovi) najbrojnije.'},
+  body:`<p>U srpskoj srednjovekovnoj umetnosti prikazani su instrumenti iz četiri porodice: <mark>idiofoni, membranofoni, kordofoni i aerofoni</mark>. Najtipičniji su neki membranofoni, <mark>najbrojniji su aerofoni</mark>, a <mark>gudačkih je najmanje</mark>.</p>
+  <ul><li>Aerofoni (duvački) čine <mark>najveću grupu</mark>, i po zastupljenosti u umetnosti i po broju instrumenata unutar pojedinih vrsta.</li>
+  <li>Česti i rado slikani: <mark>dugi rogovi, busine, savijene trube i veći šalmaji</mark>, ali svaki samo u kraćem periodu.</li>
+  <li><mark>Olifanata</mark> (kratkih signalnih rogova snažnog tona) ima malo. <mark>Dugi ratnički rogovi</mark> su masivniji i brojniji od sredine XIV veka.</li>
+  <li>Na scenama <mark>Strašnog suda i Ruganja Hristu</mark> njihovo mesto, naročito od kraja XIV veka, zauzimaju <mark>busine ili S-trube</mark>.</li>
+  <li><mark>Busine</mark> (srednjovekovne preteče današnjih truba) imaju dužu cev i zvonasti završetak; prikazane su na <mark>više od dvadeset scena</mark>. <mark>S-trube</mark> (preteče truba i trombona) slikaju se od kraja XV do polovine XVIII veka.</li>
+  <li><mark>Kratki rogovi</mark> su među najstarijim instrumentima u srpskim rukopisima.</li>
+  <li><mark>Prava flauta</mark> je najčešća na sceni <mark>Hristovog rođenja</mark>; dvostruka flauta ima samo jedan primer; postoji i poprečna flauta (kentaur svira ulevo, kao na Orijentu).</li>
+  <li>Ovu oblast je proučila <mark>Roksanda Pejović</mark> (disertacija „Predstave muzičkih instrumenata u srednjovekovnoj Srbiji", 1984).</li></ul>`,
+  keys:['aerofoni = najbrojniji','dugi rogovi','busine','savijene (S) trube','šalmaji','Strašni sud, Ruganje Hristu'],
+  short:['Najveća grupa su aerofoni (duvački), gudačkih je najmanje','Najčešći: dugi rogovi, busine, savijene trube, veći šalmaji','Busine na 20+ scena; S-trube od kraja XV do pol. XVIII v.','Prava flauta: najčešća na sceni Hristovog rođenja'],
+  points:['Četiri porodice: idiofoni, membranofoni, kordofoni, aerofoni','Aerofoni su najbrojniji','Dugi rogovi i busine','Savijene (S) trube i veći šalmaji','Strašni sud i Ruganje Hristu: busine i S-trube','Prava flauta na sceni Hristovog rođenja'],
+  mnemo:'<b>Zapamti:</b> „<b>R-B-S-Š</b>": Rogovi, Busine, Savijene trube, Šalmaji. Na Strašnom sudu se trubi!'},
  {q:'Koji su najdragoceniji izvori za proučavanje crkvene muzike od XII do XIV veka?',qc:'Који су најдрагоценији извори за проучавање црквене музике од XII до XIV века?',
-  body:`<p>Iz tog vremena <mark>nema sačuvanih notnih zapisa</mark> (srpski rukopisi sa neumama javljaju se tek kasnije). Zato su najdragoceniji <mark>pisani izvori: žitija i tipici</mark>.</p>
-  <ul><li><mark>Žitija</mark> (životopisi svetitelja i vladara): Sveti Sava i Stefan Prvovenčani (žitija Svetog Simeona Nemanje), <mark>Domentijan i Teodosije</mark> (žitija Svetog Save), kasnije Danilo II.</li>
-  <li><mark>Tipici</mark> Svetog Save (Hilandarski, Karejski, Studenički) su crkvena pravila sa <mark>uputstvima o pojanju</mark> na službama.</li>
-  <li>Opisuju <mark>pojanje na bdenijima, sahranama vladara i prenosu moštiju</mark>, svakodnevno pojanje, pojce i domestike (horovođe). Npr. na opelu Simeonu monasi su pojali „svaki na svom jeziku".</li>
-  <li>Važne su i <mark>službe (pesme) srpskim svetiteljima</mark> sa oznakama glasova (napeva), što pokazuje da su se pevale.</li></ul>`,
-  keys:['nema nota','žitija','tipici','Domentijan i Teodosije','Sveti Sava'],
-  short:['Nema notnih zapisa iz tog doba','Žitija (Sv. Sava, Stefan Prvovenčani, Domentijan, Teodosije)','Tipici Sv. Save: pravila o pojanju','Opisi pojanja na bdenijima, sahranama, prenosu moštiju'],
-  points:['Nema sačuvanih notnih zapisa','Žitija svetitelja i vladara','Domentijan i Teodosije (žitija Sv. Save)','Tipici Svetog Save sa pravilima pojanja','Opisi pojanja (bdenija, sahrane, mošti)','Službe srpskim svetiteljima sa oznakama glasova'],
-  mnemo:'<b>Zapamti:</b> „<b>Ž</b>ivot i <b>T</b>ipik" (<b>ŽT</b>): žitija pričaju šta se pojalo, tipici propisuju kako.'},
+  body:`<p><mark>Notni rukopisi</mark> su za nauku najdragoceniji izvor, ali <mark>najstariji srpski rukopisi sa neumama potiču tek iz XV veka</mark> (pesme kir Stefana Srbina). Za period XII-XIV veka najdragoceniji su zato:</p>
+  <ul><li><mark>Crkveni rukopisi iz XII-XIV veka</mark>: to su prvi rukopisi u kojima postoji <mark>jasno svedočanstvo o pojačkoj tradiciji</mark> tokom crkvene službe. <mark>Uz tekstove stoje oznake glasova</mark> u kojima treba pojati.</li>
+  <li>Tada nastaju <mark>prva originalna dela pevane stare srpske književnosti</mark>. Npr. <mark>Sveti Sava</mark> sa učenicima sastavlja <mark>službu Svetom Simeonu</mark> (Stefanu Nemanji) po uzoru na pesme <mark>osmoglasnika</mark>, sa oznakama glasova.</li>
+  <li><mark>Žitija</mark>: dragoceni podaci o muziciranju na prvim srpskim dvorovima i u crkvenim obredima nalaze se u žitijima <mark>Svetog Simeona (1114-1200) i Svetog Save (oko 1174-1236)</mark>, koja su napisali <mark>Domentijan i Teodosije</mark>, i u knjizi <mark>„Život kraljeva i arhiepiskopa srpskih"</mark> arhiepiskopa <mark>Danila</mark>.</li>
+  <li>Ova pesmena tradicija se čuva sve do XVIII veka, kada se prvi put objavljuje u <mark>Srbuljama</mark>.</li></ul>`,
+  keys:['neume tek XV vek','rukopisi XII-XIV veka','oznake glasova','služba Sv. Simeonu (Sv. Sava)','žitija: Domentijan, Teodosije, Danilo'],
+  short:['Neumskih (notnih) zapisa nema pre XV veka','Rukopisi XII-XIV v.: uz tekst oznake glasova za pojanje','Prva originalna pevana dela (Sv. Sava: služba Sv. Simeonu po osmoglasniku)','Žitija (Domentijan, Teodosije) i Danilov „Život kraljeva i arhiepiskopa srpskih"'],
+  points:['Neumski zapisi tek iz XV veka','Rukopisi XII-XIV veka su prvo jasno svedočanstvo o pojanju','Uz tekstove oznake glasova','Prva originalna dela pevane srpske književnosti','Sv. Sava: služba Sv. Simeonu po osmoglasniku','Žitija Domentijana i Teodosija, Danilov zbornik'],
+  mnemo:'<b>Zapamti:</b> nota nema, ali ima <b>„glas"</b>: uz tekst piše u kom glasu se poje. Plus <b>žitija</b> (D + T + Danilo).'},
  {q:'Šta izvori govore o muzičarima i muziciranju na feudalnim dvorovima?',qc:'Шта извори говоре о музичарима и музицирању на феудалним дворовима?',
-  body:`<p>Na dvorovima Nemanjića muzika je bila <mark>deo dvorskih ceremonija, gozbi i svečanosti</mark>. Muzičari-zabavljači su se zvali <mark>sviralnici, glumci, praskavnici</mark> (i skomrasi).</p>
-  <ul><li>Bili su <mark>stalno osoblje dvorova i feuda</mark>, ali na <mark>najnižem stupnju</mark> društva: u Dušanovo doba <mark>poklanjani su zajedno sa posedima</mark>.</li>
-  <li>Sveti Sava u prevodu Nomokanona pominje <mark>špilmane</mark> (glumci, plesači, gudači, svirači), kao putujući zabavljači na Zapadu.</li>
-  <li>Na <mark>krunisanju Stefana Prvovenčanog</mark> vlastela je slušala <mark>bubnjeve i gusle</mark>; kralja Milutina su dočekivali pesmama.</li>
-  <li><mark>Car Dušan</mark> je razmenjivao muzičare sa <mark>Dubrovnikom</mark>; <mark>Dragan Prizrenac</mark> je 1335. bio gradski muzičar u Dubrovniku.</li>
-  <li><mark>Despot Stefan Lazarević</mark> imao je <mark>muzičku kapelu na dvoru</mark>; njegovi svirači svirali su na lađama kad je dočekao turskog sultana. Despot Đurađ Branković je voleo muziku (Minhenski psaltir).</li>
-  <li>Svirali su: svirale, laute, trube, gajde, bubnjeve, gusle.</li></ul>`,
-  keys:['sviralnici, glumci, praskavnici','poklanjani uz posede','Dubrovnik','Dragan Prizrenac 1335','Stefan Lazarević - kapela'],
-  short:['Sviralnici, glumci, praskavnici','Stalno osoblje dvora, ali najniži stalež (poklanjani uz posede)','Razmena muzičara sa Dubrovnikom, Dragan Prizrenac 1335','Stefan Lazarević: muzička kapela na dvoru'],
-  points:['Muzika na ceremonijama i gozbama','Nazivi: sviralnici, glumci, praskavnici','Najniži stalež, poklanjani uz posede (Dušan)','Krunisanje Stefana Prvovenčanog: bubnjevi i gusle','Razmena sa Dubrovnikom, Dragan Prizrenac','Stefan Lazarević: muzička kapela na dvoru'],
-  mnemo:'<b>Zapamti:</b> „<b>S-G-P</b>" = Sviralnici, Glumci, Praskavnici.'},
+  body:`<p>Podataka o muziciranju na feudalnim dvorovima <mark>nema mnogo</mark>. Uspon <mark>države Nemanjića</mark>, delatnost njihovih naslednika <mark>Stefana Lazarevića i Đurđa Brankovića</mark> i velikaških porodica u Bosni, Hercegovini i Zeti podstakli su razvoj umetnosti (Hilandar, Studenica, Sopoćani, Staro Nagoričino, Gračanica, Dečani, Ravanica...).</p>
+  <ul><li>Muzika tog vremena <mark>nije mogla da ostavi trag</mark>, pa su <mark>svedočanstva samo posredna</mark>: u <mark>hronikama</mark> se pominju događaji u kojima su učestvovali <mark>muzičari-zabavljači</mark>.</li>
+  <li>Njihovi nazivi pokazuju vezu sa evropskom tradicijom: <mark>špilmani</mark> (nemačko poreklo), <mark>skomrasi, gudeci i sviralnici</mark>.</li>
+  <li>Bio je običaj da vladari u znak pažnje i poštovanja <mark>šalju svoje najbolje zabavljače susedima i saveznicima</mark> da uveličaju praznike, naročito između <mark>srpskih i dubrovačkih vladara</mark>.</li>
+  <li>Tako su sačuvana imena prvih muzičara: <mark>trubač Dragan iz Prizrena</mark>, <mark>Preda svirac</mark> i <mark>Hrusa</mark> (verovatno guslar).</li>
+  <li>Muzika nije služila samo za uveseljavanje: mogla je da bude <mark>moćno bojno oružje</mark>, a pratila je i svakodnevni život. Arhiepiskop <mark>Danilo</mark> opisuje <mark>bitku kod Velbužda 1330</mark>: zatrubile su bojne trube, a pobednika <mark>Stefana</mark> narod je dočekao <mark>pobedničkim pesmama</mark>.</li></ul>`,
+  keys:['malo podataka, posredna svedočanstva','špilmani, skomrasi, gudeci, sviralnici','razmena sa Dubrovnikom','Dragan iz Prizrena, Preda, Hrusa','bojno oružje (Velbužd 1330)'],
+  short:['Malo podataka, samo posredna svedočanstva (hronike)','Zabavljači: špilmani (nemački), skomrasi, gudeci, sviralnici','Vladari šalju zabavljače susedima, naročito Dubrovniku','Imena: trubač Dragan iz Prizrena, Preda svirac, Hrusa (guslar)'],
+  points:['Podataka nema mnogo, svedočanstva su posredna','Nemanjići, Stefan Lazarević, Đurađ Branković','Špilmani (nemačko poreklo), skomrasi, gudeci, sviralnici','Slanje zabavljača susedima, naročito Dubrovnik','Dragan iz Prizrena, Preda svirac, Hrusa','Muzika kao bojno oružje (Velbužd 1330)'],
+  mnemo:'<b>Zapamti:</b> „<b>Š-S-G-S</b>" = Špilmani, Skomrasi, Gudeci, Sviralnici. A imena: <b>D-P-H</b> = Dragan, Preda, Hrusa.'},
  {q:'Koje tri porodice membranofonih instrumenata se javljaju u srednjovekovnoj umetnosti i kakvi su talambasi?',qc:'Које три породице мембрафон инструмената се јављају у средњовековној уметности и какви су таламбаси?',
-  body:`<p>Membranofoni su udaraljke sa <mark>zategnutom kožom (membranom)</mark>. Na srednjovekovnim spomenicima Srbije javljaju se tri porodice: <mark>talambasi, bubnjevi i daire</mark>.</p>
-  <ul><li><mark>Bubnjevi</mark> su najbrojniji, javljaju se u svim vekovima i na raznim scenama; tipično balkanski (kao tapan).</li>
-  <li><mark>Daire</mark> su okvirni bubanj (vrsta tamburina) sa zvečkama.</li>
-  <li><mark>Talambasi</mark> su <mark>kotlaste udaraljke</mark> (slični malim timpanima): telo od <mark>bakra, ređe od drveta</mark>, preko otvora zategnuta koža.</li>
-  <li>Sviraju se <mark>u paru, različite veličine</mark> (levi veći, desni manji), udaraju se <mark>maljicama</mark>; orijentalnog porekla (persijsko-arapski naqqara).</li>
-  <li>Na freskama se javljaju od <mark>sredine XIV veka (Dečani)</mark>; stoje na zemlji ili podlozi ili su vezani užetom oko vrata svirača, <mark>nisu na leđima konja</mark> kao u vojnoj muzici Orijenta. Prate ih truba, rog ili busina.</li></ul>`,
-  keys:['talambasi','bubnjevi','daire','kotlasti, bakarni','u paru, maljice','Dečani XIV vek'],
-  short:['Tri porodice: talambasi, bubnjevi, daire','Talambasi: kotlaste udaraljke od bakra (ređe drveta)','Sviraju se u paru, različite veličine, maljicama','Orijentalni; na freskama od XIV veka (Dečani)'],
-  points:['Membranofoni = zategnuta koža','Talambasi, bubnjevi, daire','Talambasi su kotlaste udaraljke','Od bakra, ređe drveta','U paru, različite veličine, udaraju se maljicama','Orijentalno poreklo, od XIV veka (Dečani)'],
-  mnemo:'<b>Zapamti:</b> „<b>TBD</b>" = Talambasi, Bubnjevi, Daire. Talambasi = dva <b>bakarna kotlića</b>.'},
+  body:`<p>Membranofoni su udaraljke sa <mark>zategnutom kožom (membranom)</mark>. U srpskoj srednjovekovnoj umetnosti zastupljene su tri porodice: <mark>talambasi, bubnjevi i daire</mark>.</p>
+  <ul><li><mark>Talambasi i daire</mark> se ograničavaju na <mark>turski period</mark>.</li>
+  <li><mark>Talambasi</mark> su predstavljeni <mark>gotovo isključivo na sceni Ruganja Hristu</mark>. To su <mark>kotlaste udaraljke</mark> (kao mali timpani), koje se sviraju <mark>u paru</mark>.</li>
+  <li><mark>Bubnjevi</mark> se javljaju <mark>u ogromnom broju</mark>, u raznim vekovima i na scenama različitog sadržaja (od kraja XIII do XVIII veka).</li>
+  <li>Većina bubnjeva je tip <mark>dubljeg, cilindričnog evropskog bubnja</mark>; <mark>obešeni su o uže prebačeno oko bubnjareve glave</mark>, a maljice su različitih dužina i oblika. <mark>Tipični su za srpski srednji vek</mark>.</li>
+  <li><mark>Daire</mark>: suprotno očekivanju, na srpskim spomenicima sačuvana su <mark>samo dva primera</mark>.</li>
+  <li>Od idiofona javljaju se <mark>kastanjete (krotala) i tasovi</mark>, naročito na sceni Ruganja Hristu.</li></ul>`,
+  keys:['talambasi, bubnjevi, daire','talambasi i daire: turski period','talambasi: Ruganje Hristu','bubnjevi: ogroman broj, cilindrični','daire: samo dva primera'],
+  short:['Tri porodice: talambasi, bubnjevi, daire','Talambasi i daire: samo turski period','Talambasi: gotovo isključivo na Ruganju Hristu (kotlasti, u paru)','Bubnjevi: ogroman broj, cilindrični, na užetu oko glave; daire: samo 2 primera'],
+  points:['Talambasi, bubnjevi i daire','Talambasi i daire samo u turskom periodu','Talambasi gotovo isključivo na sceni Ruganja Hristu','Talambasi su kotlaste udaraljke u paru','Bubnjevi u ogromnom broju, cilindrični evropski tip','Daire: samo dva primera'],
+  mnemo:'<b>Zapamti:</b> „<b>TBD</b>" = Talambasi, Bubnjevi, Daire. <b>T</b>alambasi = <b>T</b>urci + Ruganje Hristu.'},
  {q:'Šta Teofilakt Simokata i Teodor Sinkel beleže o ulozi muzike u ratovima i slovenskim muzičarima?',qc:'Шта Теофилакт Симоката и Теодор Синкел бележе о улози музике у ратовима и словенским музичарима?',
-  body:`<p>Obojica su <mark>vizantijski pisci VII veka</mark>, a njihovi zapisi su <mark>najstarija svedočanstva o muzici Slovena</mark>.</p>
-  <ul><li><mark>Teofilakt Simokata</mark> piše da je car Mavrikije <mark>592.</mark> kod Enatona (Trakija) zarobio <mark>tri Slovena bez oružja, koji su nosili samo muzičke instrumente (kitare, lire)</mark>.</li>
-  <li>Rekli su da žive na kraju zapadnog okeana, da ne znaju da rukuju oružjem i da se <mark>bave muzikom jer vole mir</mark>. To je <mark>najstariji zapis o muzici Južnih Slovena</mark>.</li>
-  <li>Simokata pominje i <mark>bojne trube</mark> i avarsku pesmu: avarski kagan zgrabi bojnu trubu i skuplja vojsku. Muzika u ratu služi za <mark>znake, hrabrenje i zastrašivanje</mark>.</li>
-  <li><mark>Teodor Sinkel</mark> je bio očevidac <mark>avarsko-slovenske opsade Carigrada 626.</mark> Beleži da se duž čitavog bedema i po moru <mark>razlegala vriska i bojni poklici</mark>, ratna buka kao deo borbe.</li></ul>`,
-  keys:['VII vek, Vizantija','592 tri Slovena sa lirama','miroljubivi muzičari','bojne trube','626 opsada Carigrada','bojni poklici'],
-  short:['Simokata: 592. tri Slovena bez oružja, samo sa lirama (kitarama)','Sloveni = miroljubivi, bave se muzikom','Bojne trube i pesma u ratu (Avari)','Sinkel: opsada Carigrada 626, bojni poklici i vriska'],
-  points:['Vizantijski pisci VII veka','Simokata: 592, tri Slovena bez oružja','Nosili su kitare (lire), vole mir i muziku','Najstariji zapis o muzici Južnih Slovena','Bojne trube i pesma u ratu','Sinkel: opsada Carigrada 626, bojni poklici'],
-  mnemo:'<b>Zapamti:</b> <b>S</b>imokata = <b>S</b>viraju (tri Slovena sa lirama, 592), <b>S</b>inkel = <b>S</b>trka i vriska (opsada 626).'},
+  body:`<p>Obojica su <mark>vizantijski pisci</mark>. U starim hronikama muzika se pominje samo usput, ali su <mark>naročito karakteristični opisi muzike koja je pratila bitke</mark>.</p>
+  <ul><li><mark>Teofilakt Simokata</mark> u delu <mark>„Istorija"</mark> (bio je sekretar na dvoru <mark>Iraklija I</mark>) opisuje ratove Vizantinaca sa <mark>Avarima i Slovenima</mark> krajem VI i početkom VII veka.</li>
+  <li>Beleži da su careve štitonoše (car <mark>Mavrikije</mark>) uhvatile <mark>tri Slovena</mark> koji <mark>nisu imali gvozdeno oružje</mark>, a u prtljagu su nosili samo <mark>kitare</mark>.</li>
+  <li>Objasnili su da nose kitare jer <mark>nisu vični oružju</mark>: njihova zemlja ne zna za gvožđe i živi <mark>mirno</mark>, pa oni <mark>sviraju na lirama, jer ne znaju da duvaju u bojne trube</mark>. Njima, kojima je rat nepoznat, <mark>milije je bavljenje muzikom</mark>.</li>
+  <li><mark>Teodor Sinkel</mark>, <mark>arhivar Svete Sofije</mark> u Carigradu (VII vek, vreme <mark>opsade Carigrada</mark>), drugačije prikazuje njihovo <mark>vojno-muzičko angažovanje</mark>.</li>
+  <li>Piše da se duž bedema i po moru <mark>razlegalo kričanje i bojna vriska</mark>, jer su <mark>bojne trube svirale sa svih strana na juriš</mark>, a grad je bio okružen vikom i bojnom hukom.</li>
+  <li>Dakle: kod Simokate Sloveni su <mark>miroljubivi muzičari</mark>, a kod Sinkela muzika (trube, vika) je <mark>deo ratovanja</mark>. Sloveni se kao muzičari pominju i u Nemačkoj u IX i u Carigradu u X veku.</li></ul>`,
+  keys:['vizantijski pisci','Simokata: „Istorija"','tri Slovena sa kitarama','ne znaju bojne trube, vole muziku','Sinkel: arhivar Sv. Sofije','opsada Carigrada, trube na juriš'],
+  short:['Simokata („Istorija"): tri Slovena bez gvozdenog oružja, samo sa kitarama','Sviraju na lirama jer ne znaju bojne trube; žive mirno, milija im je muzika','Sinkel, arhivar Sv. Sofije: opsada Carigrada','Bojne trube na juriš, vika i bojna huka'],
+  points:['Vizantijski pisci, opisi muzike u bitkama','Simokata, „Istorija", ratovi sa Avarima i Slovenima','Tri Slovena bez oružja, nosili kitare','Ne znaju bojne trube, vole mir i muziku','Sinkel, arhivar Svete Sofije, opsada Carigrada','Bojne trube sa svih strana na juriš, vika i huka'],
+  mnemo:'<b>Zapamti:</b> <b>S</b>imokata = <b>S</b>viraju (tri Slovena sa kitarama, mir). <b>S</b>inkel = <b>S</b>trka (trube na juriš pod Carigradom).'},
  {q:'Kir Stefan Srbin',qc:'Кир Стефан Србин',
-  body:`<p><mark>Prvi poznati srpski kompozitor</mark> (živeo krajem XIV i u XV veku). „Kir" znači <mark>gospodin</mark>, titula poštovanja.</p>
-  <ul><li>Bio je <mark>domestik</mark>, tj. prvi pojac i <mark>horovođa</mark>; smatra se da je sredinom XV veka delovao na <mark>dvoru u Smederevu</mark>.</li>
-  <li>Pisao je crkvene pesme <mark>na grčkom i crkvenoslovenskom</mark>, u <mark>vizantijskoj neumskoj notaciji</mark>, u bogatom (kalofonskom) stilu.</li>
-  <li>Najpoznatija dela: <mark>„Ninja sili nebesnija"</mark> (heruvimska pesma) i <mark>„Vkusite i vidite"</mark> (pričasna), potpisane „Tvorenije domestika kir Stefana Srbina".</li>
-  <li>Sačuvane su u rukopisu Psaltikija (Atinska nacionalna biblioteka); dela je proučio i preneo u savremene note <mark>Dimitrije Stefanović</mark>.</li>
-  <li>Uz njega su poznati i <mark>Isaija Srbin i Nikola Srbin</mark>. To dokazuje da su Srbi aktivno stvarali u okviru vizantijske muzike.</li></ul>`,
-  keys:['prvi srpski kompozitor','domestik = horovođa','Smederevo XV vek','neume','Ninja sili nebesnija','Isaija i Nikola Srbin'],
-  short:['Prvi poznati srpski kompozitor (XV vek)','Domestik (horovođa), verovatno dvor u Smederevu','Pisao neumama, grčki i crkvenoslovenski','„Ninja sili nebesnija", „Vkusite i vidite"'],
-  points:['Prvi poznati srpski kompozitor','XV vek, dvor u Smederevu','Domestik = horovođa, „kir" = gospodin','Vizantijska neumska notacija','„Ninja sili nebesnija" i „Vkusite i vidite"','Uz njega Isaija Srbin i Nikola Srbin'],
-  mnemo:'<b>Zapamti:</b> <b>Kir</b> = gospodin, <b>Stefan</b> kao despot, <b>Smederevo</b>: „Ninja sili" peva hor koji on vodi.'},
+  body:`<p><mark>Kir Stefan Srbin</mark> je <mark>srpski kompozitor XV veka</mark>. Pretpostavlja se da je živeo <mark>sredinom XV veka na dvoru Lazara Brankovića u Smederevu</mark>. („Kir" znači gospodin.)</p>
+  <ul><li>Njegove dve pesme su <mark>najstariji poznati srpski rukopisi sa neumskom notacijom</mark>, sa tekstom na crkvenoslovenskom jeziku srpske redakcije (XV vek).</li>
+  <li>Zapisane su u <mark>Psaltikiji Narodne biblioteke u Beogradu</mark> (rukopis br. 93, <mark>izgoreo</mark>; sačuvane su <mark>fotografije 12 strana</mark>).</li>
+  <li>Pesme: <mark>„Ninja sili" (Sada sile nebeske)</mark> i <mark>„Vkusite i vidite"</mark>, sa različitim tekstovima: jedan je <mark>crkvenoslovenski srpske redakcije</mark>, a dva su <mark>grčka</mark> (po 34. i 148. psalmu).</li>
+  <li>Obe pesme pripadaju <mark>liturgiji pređeosvećenih darova</mark>.</li>
+  <li>U Psaltikiji Stefana Srbina postoji i <mark>grafička predstava modusa</mark> (glasova).</li>
+  <li>Drugi srpski kompozitori XV veka: <mark>Isaija Srbin</mark>, monah u manastiru <mark>Matejče</mark> (Kumanovo), sa pesmama <mark>Trisveta pesma, Aliluja i Polijelej</mark> (dvojezični rukopis s kraja XV veka, danas u Narodnoj biblioteci u Atini), i <mark>Nikola Srbin</mark> sa <mark>Heruvimskom pesmom</mark> na grčkom tekstu.</li></ul>`,
+  keys:['XV vek','dvor Lazara Brankovića, Smederevo','najstariji neumski rukopisi','„Ninja sili" i „Vkusite i vidite"','Psaltikija br. 93 (izgorela)','Isaija i Nikola Srbin'],
+  short:['Kompozitor XV veka, dvor Lazara Brankovića u Smederevu','Najstariji srpski neumski rukopisi','„Ninja sili" (Sada sile nebeske) i „Vkusite i vidite", liturgija pređeosvećenih darova','Psaltikija Narodne biblioteke, br. 93 (izgorela, 12 strana na fotografijama)'],
+  points:['Kompozitor sredine XV veka','Dvor Lazara Brankovića u Smederevu','Najstariji srpski rukopisi sa neumama','„Ninja sili" i „Vkusite i vidite"','Liturgija pređeosvećenih darova','Psaltikija br. 93, izgorela, sačuvane fotografije','Isaija Srbin (Matejče) i Nikola Srbin'],
+  mnemo:'<b>Zapamti:</b> <b>Kir Stefan</b> = Smederevo kod <b>Lazara</b> Brankovića, „Ninja sili" + „Vkusite i vidite", izgoreli rukopis br. <b>93</b>.'},
  {q:'Svetovna muzika u srednjem veku',qc:'Световна музика у средњем веку',
-  body:`<p>Svetovna (nereligiozna) muzika nije sačuvana u notama, ali o njoj saznajemo iz <mark>žitija, hronika, zakonika, dubrovačkih arhiva i fresaka</mark>. Imala je iste funkcije kao u drugim feudalnim zemljama.</p>
-  <ul><li><mark>Dvorska muzika</mark>: ceremonije, krunisanja, gozbe, dočeci vladara (sviralnici, glumci, praskavnici; kapela Stefana Lazarevića).</li>
-  <li><mark>Vojna muzika</mark>: <mark>trube, rogovi, busine, bubnjevi i talambasi</mark> za znake u boju, hrabrenje i zastrašivanje.</li>
-  <li><mark>Narodna muzika</mark>: pesme i igre uz obrede, svadbe i svetkovine, <mark>gusle</mark> i svirale; crkva je osuđivala „bezumne" igre i pesme.</li>
-  <li><mark>Putujući muzičari-zabavljači</mark> (špilmani, skomrasi) kao žongleri na Zapadu; veze sa <mark>Dubrovnikom</mark> (Dragan Prizrenac).</li>
-  <li>Instrumenti sa fresaka: lauta, psalterion, gudački instrumenti (rebek), trube, bubnjevi, talambasi, daire, cimbale (tasovi).</li>
-  <li>Pod Turcima (od sredine XV veka) narod peva <mark>uz gusle</mark> i svira tambure, zurle i tapan; srpski guslari bili su poznati i na dvorovima u Poljskoj i Mađarskoj.</li></ul>`,
-  keys:['dvorska','vojna','narodna','putujući zabavljači','gusle','izvori: žitija, freske, Dubrovnik'],
-  short:['Nije zapisana notama, znamo je iz žitija, fresaka, Dubrovnika','Dvorska (ceremonije, gozbe), vojna (trube, bubnjevi)','Narodna (obredi, igre, gusle)','Putujući zabavljači; pod Turcima gusle, zurle, tapan'],
-  points:['Nema nota, izvori su posredni','Dvorska muzika (ceremonije, gozbe)','Vojna muzika (trube, rogovi, bubnjevi)','Narodna muzika (obredi, igre, gusle)','Putujući zabavljači, veza sa Dubrovnikom','Instrumenti sa fresaka (lauta, psalterion...)'],
-  mnemo:'<b>Zapamti:</b> „<b>DVN</b>" = Dvor, Vojska, Narod. Tri mesta gde svira svetovna muzika.'}
+  body:`<p>Svetovna (nereligiozna) muzika <mark>nije mogla da ostavi trag</mark> o svom postojanju, pa o njoj znamo samo <mark>posredno</mark>: iz hronika, putopisa, književnih dela, pravnih dokumenata i <mark>likovnih spomenika</mark>.</p>
+  <ul><li><mark>Dvorska muzika</mark>: uspon Nemanjića, Stefana Lazarevića, Đurđa Brankovića i velikaša u Bosni, Hercegovini i Zeti podstakao je umetnost. Na dvorovima nastupaju <mark>muzičari-zabavljači</mark>: <mark>špilmani, skomrasi, gudeci i sviralnici</mark>.</li>
+  <li>Vladari <mark>razmenjuju zabavljače</mark> za praznike, naročito sa <mark>Dubrovnikom</mark>; poznata su imena <mark>trubača Dragana iz Prizrena, Prede svirca i Hruse</mark> (guslar).</li>
+  <li><mark>Vojna muzika</mark>: muzika je mogla da bude <mark>moćno bojno oružje</mark> (bojne trube kod Sinkela; Danilov opis <mark>bitke kod Velbužda 1330</mark> i pobedničkih pesama).</li>
+  <li><mark>Instrumente</mark> poznajemo sa <mark>fresaka i iluminiranih rukopisa</mark> (najstariji prikaz instrumenta je na minijaturi iz <mark>1180.</mark>): rogovi, busine, trube, šalmaji, flaute, bubnjevi, talambasi, daire, tasovi, laute, psalterioni, harfe, gudački instrumenti.</li>
+  <li><mark>Narodna (folklorna) muzika</mark>: Sloveni su na Balkan doneli svoje običaje, pesme i igre. Među najstarijim obredima su <mark>koleda</mark> (početak Sunčeve godine, bog Vid/Svetovid, maske, borba svetla i mraka; izvode muškarci), <mark>lazarice</mark> (proleće, pesme za zdravlje i berićet; deca) i <mark>kraljice</mark> (oko Duhova; devojke). Peva se <mark>antifono</mark>. Pesmom i igrom se obeležavaju <mark>svadba, rođenje i smrt</mark>.</li>
+  <li>U <mark>turskom periodu</mark> (XV-XVIII vek) gase se kulturni centri (zabrana rada <mark>Pećke patrijaršije 1766</mark>), ali se u narodu čuva <mark>živa folklorna tradicija</mark>, a crkvena muzika u Hilandaru i fruškogorskim manastirima.</li></ul>`,
+  keys:['posredna svedočanstva','dvorska: zabavljači','Dubrovnik: Dragan, Preda, Hrusa','vojna: bojno oružje','narodna: koleda, lazarice, kraljice','freske: instrumenti'],
+  short:['Nema zapisa, samo posredni izvori (hronike, freske, književnost)','Dvor: špilmani, skomrasi, gudeci, sviralnici; razmena sa Dubrovnikom','Muzika kao bojno oružje (Velbužd 1330)','Narodna: koleda, lazarice, kraljice; svadba, rođenje, smrt'],
+  points:['Nije ostavila trag, izvori su posredni','Dvorska muzika i muzičari-zabavljači','Razmena zabavljača, Dubrovnik (Dragan, Preda, Hrusa)','Vojna muzika, bojne trube (Velbužd 1330)','Instrumenti sa fresaka i minijatura (od 1180.)','Narodni obredi: koleda, lazarice, kraljice'],
+  mnemo:'<b>Zapamti:</b> „<b>D-V-N</b>" = Dvor, Vojska, Narod. Tri mesta gde svira svetovna muzika.'}
 ];
 
 const TQ=[
- ['Koliko Slovena sa muzičkim instrumentima (bez oružja) opisuje Teofilakt Simokata?',['Tri','Pet','Dvanaest','Jednog'],0,'Car Mavrikije je 592. zarobio tri Slovena koji su nosili samo kitare (lire).'],
- ['Koje godine je opsada Carigrada koju opisuje Teodor Sinkel?',['626.','592.','863.','1335.'],0,'Avarsko-slovenska opsada Carigrada 626. Sinkel beleži vrisku i bojne pokliče.'],
- ['Ko je osnovao Ohridsku školu?',['Kliment','Naum','Metodije','Sveti Sava'],0,'Kliment Ohridski, 886. godine. Naum je radio u Preslavu.'],
- ['U kojoj školi je Naum radio pre nego što je nasledio Klimenta u Ohridu?',['Preslavskoj','Hilandarskoj','Studeničkoj','Smederevskoj'],0,'Naum je radio u Preslavskoj školi (886-893).'],
- ['Koje su tri porodice membranofona na srednjovekovnim spomenicima Srbije?',['Talambasi, bubnjevi, daire','Trube, rogovi, svirale','Lauta, psalterion, harfa','Tasovi, zvona, krotale'],0,'Talambasi, bubnjevi i daire (TBD).'],
- ['Kakvi su talambasi?',['Kotlaste udaraljke od bakra, sviraju se u paru','Duge kovane trube','Gudački instrument sa jednom žicom','Okvirni bubanj sa zvečkama'],0,'Bakarne (ređe drvene) kotlaste udaraljke, u paru različite veličine, udaraju se maljicama.'],
- ['Koja grupa aerofona je najbrojnija u srednjovekovnoj umetnosti Srbije?',['Trube (busine) i rogovi','Gajde','Orgulje','Dvojnice'],0,'Kovane trube (busine) i rogovi različitih veličina.'],
- ['Kako su se zvali muzičari-zabavljači na srpskim dvorovima?',['Sviralnici, glumci, praskavnici','Trubaduri i minezengeri','Domestici i protopsalti','Kantori i organisti'],0,'S-G-P: sviralnici, glumci, praskavnici.'],
- ['Ko je bio Dragan Prizrenac?',['Srpski muzičar, gradski muzičar u Dubrovniku 1335.','Domestik na dvoru u Smederevu','Pisac žitija Svetog Save','Učenik Ćirila i Metodija'],0,'Čuveni srpski muzičar koji je 1335. svirao kao gradski muzičar u Dubrovniku.'],
- ['Koji vladar je imao muzičku kapelu na dvoru, a svirači su svirali na lađama kad je dočekao sultana?',['Despot Stefan Lazarević','Stefan Nemanja','Kralj Milutin','Stefan Prvovenčani'],0,'Despot Stefan Lazarević.'],
- ['U čije doba su muzičari poklanjani zajedno sa posedima?',['Cara Dušana','Kneza Lazara','Despota Đurđa','Kralja Dragutina'],0,'Car Dušan je, kada nekome da posed, davao i muzičare. To pokazuje njihov nizak položaj.'],
- ['Šta znači „kir" u imenu Kir Stefan Srbin?',['Gospodin','Sveštenik','Pevač','Srbin'],0,'„Kir" je grčka titula poštovanja: gospodin.'],
- ['Šta je domestik?',['Prvi pojac, horovođa','Dvorski svirač na trubi','Prepisivač knjiga','Vizantijski istoričar'],0,'Domestik vodi hor (pevnicu). Kir Stefan je bio domestik.'],
- ['Koje je najpoznatije delo Kir Stefana Srbina?',['„Ninja sili nebesnija"','„Ave Marija"','„Osmoglasnik"','„Žitije Svetog Save"'],0,'Heruvimska pesma „Ninja sili nebesnija", a tu je i „Vkusite i vidite".'],
- ['Kojom notacijom su zapisana dela Kir Stefana?',['Vizantijskim neumama','Linijskim notnim sistemom','Tabulaturom','Nisu zapisana'],0,'Vizantijska neumska notacija, tekst na grčkom i crkvenoslovenskom.'],
- ['Gde je, kako se smatra, delovao Kir Stefan Srbin?',['Na dvoru u Smederevu','U Ohridu','U Dubrovniku','U Carigradu kao istoričar'],0,'Sredinom XV veka, na dvoru u Smederevu.'],
- ['Najznačajnija prekretnica u razvoju muzike na južnoslovenskim prostorima je:',['Pokrštavanje i rad Ćirila i Metodija','Dolazak Turaka','Osnivanje Dubrovnika','Pronalazak notnog sistema'],0,'Hrišćanstvo i bogosluženje na slovenskom jeziku (IX vek).'],
- ['Najdragoceniji izvori za crkvenu muziku XII-XIV veka su:',['Žitija i tipici','Notni rukopisi sa linijama','Dubrovački zakoni','Turski defteri'],0,'Nota iz tog doba nema, pa su glavni izvori žitija i tipici.'],
- ['Ko su pisci žitija Svetog Save?',['Domentijan i Teodosije','Kliment i Naum','Simokata i Sinkel','Isaija i Nikola Srbin'],0,'Domentijan i Teodosije, hilandarski monasi.'],
- ['Kakva je bila srpska crkvena muzika u srednjem veku?',['Vokalna i jednoglasna','Instrumentalna i višeglasna','Samo za orgulje','Samo narodna'],0,'Isključivo vokalna, jednoglasna (monofona), pod vizantijskim uticajem.'],
- ['Šta je vlastela slušala na krunisanju Stefana Prvovenčanog?',['Bubnjeve i gusle','Orgulje','Hor iz Ohrida','Mađarsku rapsodiju 😄'],0,'Bubnjeve i gusle.'],
- ['Period „stare srpske muzike" traje:',['Od doseljenja Slovena (VI-VII v.) do kraja XVIII veka','Od XIX do XX veka','Samo u XV veku','Od 1804. do 1918.'],0,'Od doseljenja Slovena do kraja XVIII veka.'],
- ['Na kojim scenama se instrumenti najčešće slikaju?',['Rođenje Hristovo, Ruganje Hristu, psalmi','Bitka na Kosovu','Portreti vladara','Pejzaži'],0,'Rođenje Hristovo, Ruganje Hristu, Strašni sud i ilustracije psalama.'],
- ['Kako su talambasi prikazani na srpskim freskama?',['Na zemlji ili oko vrata svirača, ne na konju','Uvek na leđima konja','Okačeni na crkveni zvonik','Samo u rukama anđela kao trube'],0,'Za razliku od orijentalne vojne muzike, nisu na leđima konja.'],
- ['Šta je Sveti Sava pomenuo u prevodu Nomokanona?',['Špilmane (glumce, plesače, svirače)','Talambase','Kir Stefana','Svadbeni marš'],0,'Špilmani: putujući zabavljači, glumci, plesači, gudači i svirači.']
+ ['Koliko Slovena bez gvozdenog oružja opisuje Teofilakt Simokata?',['Tri','Pet','Dvanaest','Jednog'],0,'Careve štitonoše uhvatile su tri Slovena koji su nosili samo kitare.'],
+ ['Šta su ti Sloveni nosili u prtljagu?',['Kitare','Mačeve','Bojne trube','Bubnjeve'],0,'Nosili su kitare, jer nisu bili vični oružju.'],
+ ['Zašto su, po Simokati, Sloveni svirali na lirama?',['Ne znaju da duvaju u bojne trube i žive mirno','Bili su dvorski zabavljači','Tako su plašili neprijatelja','Bili su crkveni pojci'],0,'Njihova zemlja ne zna za gvožđe i živi mirno, pa im je milije bavljenje muzikom.'],
+ ['Na čijem dvoru je Teofilakt Simokata bio sekretar?',['Iraklija I','Mavrikija','Justinijana','Stefana Nemanje'],0,'Bio je sekretar na dvoru Iraklija I i pisao delo „Istorija".'],
+ ['Ko je bio Teodor Sinkel?',['Arhivar Svete Sofije u Carigradu','Učenik Ćirila i Metodija','Srpski kompozitor','Dubrovački trubač'],0,'Arhivar Svete Sofije u VII veku, u vreme opsade Carigrada.'],
+ ['Šta beleži Teodor Sinkel?',['Bojne trube sviraju na juriš, vika i bojna huka pod Carigradom','Tri Slovena sa kitarama','Gozbu na dvoru Nemanjića','Službu Svetom Simeonu'],0,'Opisuje vojno-muzičko angažovanje: trube sa svih strana na juriš.'],
+ ['Ko je osnovao škole u Ohridu i Preslavu?',['Kliment i Naum','Ćirilo i Metodije','Domentijan i Teodosije','Isaija i Nikola Srbin'],0,'Kliment (?-917) i Naum (?-910), učenici Ćirila i Metodija.'],
+ ['Koliko je učenika imao Kliment Ohridski?',['Više od tri hiljade','Oko sto','Dvanaest','Tri'],0,'Imao je više od tri hiljade učenika; sačuvana su svedočanstva o dobrim pojcima.'],
+ ['Čemu je Kliment podučavao sveštenike?',['Liturgijskom pojanju, notaciji i vizantijskoj teoriji','Sviranju na lauti','Pisanju žitija','Gradnji crkava'],0,'Kliment je bio pesnik i muzičar.'],
+ ['Kakva je bila muzička praksa u Klimentovo doba?',['Jednoglasno pevanje na staroslovenskom','Višeglasno pevanje na latinskom','Instrumentalna muzika','Pevanje samo na grčkom'],0,'Jednoglasno pevanje na staroslovenskom, zajedničko za sve Južne Slovene.'],
+ ['Najznačajnija prekretnica u razvoju muzike na ovim prostorima je:',['Pokrštavanje južnoslovenskih plemena (IX vek)','Dolazak Turaka','Osnivanje Dubrovnika','Velika šizma'],0,'Pokrštavanje, započeto u IX veku.'],
+ ['Od koga veru primaju Srbi, Makedonci i Bugari?',['Iz vizantijske crkve (Istok)','Od rimskih misionara','Od Avara','Od Mađara'],0,'Slovenci i Hrvati su pokršteni uz pomoć rimskih misionara.'],
+ ['Koje godine je velika šizma?',['1054.','1219.','1330.','863.'],0,'Posle šizme 1054. granica Istoka i Zapada prošla je južnoslovenskim zemljama.'],
+ ['Koje godine je Srpska crkva dobila samostalnost?',['1219.','1054.','1180.','1459.'],0,'Tada u crkvenoslovenski jezik i pojanje snažnije ulaze nacionalni elementi.'],
+ ['Koje su tri porodice membranofona u srpskoj srednjovekovnoj umetnosti?',['Talambasi, bubnjevi i daire','Trube, rogovi i svirale','Laute, harfe i psalterioni','Tasovi, krotala i zvona'],0,'TBD: talambasi, bubnjevi, daire.'],
+ ['Na kojoj sceni su talambasi predstavljeni gotovo isključivo?',['Ruganje Hristu','Hristovo rođenje','Svadba u Kani','Strašni sud'],0,'Talambasi su gotovo isključivo na sceni Ruganja Hristu.'],
+ ['Na koji period se ograničavaju talambasi i daire?',['Turski period','XII vek','Doba Nemanjića','Vizantijski VII vek'],0,'Talambasi i daire su iz turskog perioda, a bubnjevi se javljaju u svim vekovima.'],
+ ['Koliko je primera daira sačuvano na srpskim spomenicima?',['Samo dva','Preko dvadeset','Nijedan','Stotine'],0,'Suprotno očekivanju, samo dva primera.'],
+ ['Kako su bubnjevi prikazani na freskama?',['Cilindrični, obešeni o uže oko bubnjareve glave','Na leđima konja','Kao mali kotlići u paru','U rukama anđela na nebu'],0,'Većina je tip dubljeg, cilindričnog evropskog bubnja.'],
+ ['Koja porodica instrumenata je najbrojnija u srpskoj srednjovekovnoj umetnosti?',['Aerofoni','Kordofoni','Idiofoni','Membranofoni'],0,'Najbrojniji su aerofoni, najtipičniji neki membranofoni, a gudačkih je najmanje.'],
+ ['Kojih instrumenata ima najmanje?',['Gudačkih','Duvačkih','Bubnjeva','Truba'],0,'Gudačkih instrumenata je najmanje.'],
+ ['Koji aerofoni su česti i rado slikani?',['Dugi rogovi, busine, savijene trube, veći šalmaji','Orgulje i harmonike','Gajde i zurle','Klarineti i fagoti'],0,'R-B-S-Š: rogovi, busine, savijene trube, šalmaji.'],
+ ['Na koliko scena su prikazane busine?',['Na više od dvadeset','Samo na jednoj','Na dve','Nijednoj'],0,'Busine, preteče današnjih truba, prikazane su na više od 20 scena.'],
+ ['Koja flauta je najčešća na sceni Hristovog rođenja?',['Prava flauta','Poprečna flauta','Dvostruka flauta','Blok-flauta'],0,'Prava flauta; dvostruka ima samo jedan primer.'],
+ ['Kako su se zvali muzičari-zabavljači na dvorovima?',['Špilmani, skomrasi, gudeci, sviralnici','Trubaduri i minezengeri','Domestici i protopsalti','Kantori i organisti'],0,'Š-S-G-S. Nazivi pokazuju vezu sa evropskom tradicijom.'],
+ ['Na kakvo poreklo ukazuje naziv „špilmani"?',['Nemačko','Grčko','Tursko','Latinsko'],0,'Špilmani su nemačkog porekla.'],
+ ['Koja su imena prvih poznatih srpskih muzičara?',['Dragan iz Prizrena, Preda svirac, Hrusa','Kliment, Naum, Sava','Isaija, Nikola, Stefan','Domentijan, Teodosije, Danilo'],0,'Sačuvana zahvaljujući razmeni zabavljača sa Dubrovnikom.'],
+ ['Šta je bio Dragan iz Prizrena?',['Trubač','Guslar','Pojac','Kompozitor'],0,'Trubač Dragan iz Prizrena; Hrusa je verovatno bio guslar.'],
+ ['Sa kim su srpski vladari najčešće razmenjivali zabavljače?',['Sa dubrovačkim vladarima','Sa Turcima','Sa Mađarima','Sa Rusima'],0,'Naročito između srpskih i dubrovačkih vladara.'],
+ ['Koju bitku opisuje arhiepiskop Danilo?',['Bitku kod Velbužda 1330.','Kosovsku bitku','Opsadu Carigrada','Bitku na Marici'],0,'Zatrubile su bojne trube, a pobednika Stefana narod je dočekao pobedničkim pesmama.'],
+ ['Na čijem dvoru je, kako se pretpostavlja, živeo Kir Stefan Srbin?',['Lazara Brankovića u Smederevu','Cara Dušana u Prizrenu','Stefana Nemanje u Rasu','Iraklija u Carigradu'],0,'Sredinom XV veka na dvoru Lazara Brankovića u Smederevu.'],
+ ['Koje dve pesme Kir Stefana su sačuvane?',['„Ninja sili" i „Vkusite i vidite"','„Ave Marija" i „Serenada"','„Trisveta pesma" i „Polijelej"','„Heruvimska pesma" i „Aliluja"'],0,'„Ninja sili" (Sada sile nebeske) i „Vkusite i vidite".'],
+ ['Kojoj liturgiji pripadaju pesme Kir Stefana?',['Liturgiji pređeosvećenih darova','Liturgiji Svetog Vasilija','Večernjoj službi','Krunisanju'],0,'Obe pripadaju liturgiji pređeosvećenih darova.'],
+ ['Gde su zapisane pesme Kir Stefana?',['U Psaltikiji Narodne biblioteke u Beogradu (br. 93)','U Miroslavljevom jevanđelju','U Srbuljama','U Dečanima na fresci'],0,'Rukopis je izgoreo, sačuvane su fotografije 12 strana.'],
+ ['Iz kog veka su najstariji srpski rukopisi sa neumama?',['XV veka','XII veka','IX veka','XVIII veka'],0,'To su dve pesme kir Stefana Srbina.'],
+ ['U kom manastiru je bio monah Isaija Srbin?',['Matejče (Kumanovo)','Hilandar','Studenica','Ravanica'],0,'Njegove pesme: Trisveta pesma, Aliluja i Polijelej.'],
+ ['Šta je komponovao Nikola Srbin?',['Heruvimsku pesmu na grčki tekst','Polijelej','„Ninja sili"','Službu Svetom Simeonu'],0,'Nikola Srbin, kompozitor XV veka.'],
+ ['Šta se nalazi uz tekstove u crkvenim rukopisima XII-XIV veka?',['Oznake glasova u kojima treba pojati','Linijske note','Crteži instrumenata','Ništa'],0,'To je prvo jasno svedočanstvo o pojačkoj tradiciji.'],
+ ['Ko su pisci žitija Svetog Simeona i Svetog Save?',['Domentijan i Teodosije','Kliment i Naum','Simokata i Sinkel','Isaija i Nikola'],0,'Plus Danilov „Život kraljeva i arhiepiskopa srpskih".'],
+ ['Po uzoru na šta je Sveti Sava sastavio službu Svetom Simeonu?',['Po pesmama osmoglasnika','Po narodnim pesmama','Po latinskoj misi','Po Kir Stefanu'],0,'Imala je oznake glasova; tradicija se objavljuje u Srbuljama u XVIII veku.'],
+ ['Koji period obuhvata stara srpska muzika?',['Od doseljavanja Slovena (VI-VII v.) do kraja XVIII veka','Od XIX do XX veka','Samo XV vek','Od 1804. do 1918.'],0,'Poklapa se sa evropskom srednjovekovnom, renesansnom, baroknom i klasičnom muzikom.'],
+ ['Ko je 1962. napisao prvu istoriju srpske muzike?',['Stana Đurić-Klajn','Kosta Manojlović','Roksanda Pejović','Miodrag Vasiljević'],0,'Stana Đurić-Klajn je odredila celine koje važe i danas.'],
+ ['Iz koje godine je najstariji prikaz instrumenta na minijaturi?',['1180.','1330.','1054.','1766.'],0,'Od kraja XII do kraja XVIII veka prati se razvoj instrumentarija.'],
+ ['Ko izvodi lazarice?',['Deca','Muškarci','Devojke','Monasi'],0,'Koleda: muškarci; lazarice: deca; kraljice: devojke.'],
+ ['Koje godine je zabranjen rad Pećke patrijaršije?',['1766.','1459.','1219.','1690.'],0,'U turskom periodu gase se centri kulturnog delovanja.']
 ];
 
 const PAIRS=[
- ['Kliment','Ohridska škola'],['Naum','Preslavska škola'],['Teofilakt Simokata','Tri Slovena sa lirama (592)'],['Teodor Sinkel','Bojni poklici pod Carigradom (626)'],
- ['Kir Stefan Srbin','„Ninja sili nebesnija"'],['Dragan Prizrenac','Gradski muzičar u Dubrovniku'],['Stefan Lazarević','Muzička kapela na dvoru'],['Talambasi','Bakarni kotlasti bubnjevi u paru'],
- ['Busine','Duge kovane trube'],['Daire','Okvirni bubanj sa zvečkama'],['Domentijan i Teodosije','Žitija Svetog Save'],['Ćirilo i Metodije','Bogosluženje na slovenskom']
+ ['Kliment','Ohridska škola, 3000+ učenika'],['Naum','Preslavska škola'],['Teofilakt Simokata','Tri Slovena sa kitarama'],['Teodor Sinkel','Bojne trube pod Carigradom'],
+ ['Kir Stefan Srbin','„Ninja sili" i „Vkusite i vidite"'],['Isaija Srbin','Manastir Matejče, Polijelej'],['Nikola Srbin','Heruvimska pesma na grčkom'],['Dragan iz Prizrena','Trubač'],
+ ['Hrusa','Verovatno guslar'],['Talambasi','Gotovo samo na Ruganju Hristu'],['Daire','Samo dva primera'],['Busine','Preteče truba, 20+ scena'],
+ ['Stana Đurić-Klajn','Prva istorija srpske muzike (1962)'],['Arhiepiskop Danilo','Bitka kod Velbužda 1330'],['Domentijan i Teodosije','Žitija Sv. Simeona i Sv. Save'],['Roksanda Pejović','Instrumenti na freskama (1984)']
 ];
 
 const TIMELINE=[
- ['VI-VII vek','Sloveni se doseljavaju na Balkan. Počinje period <b>stare srpske muzike</b>.'],
- ['592.','<b>Teofilakt Simokata</b>: car Mavrikije zarobljava tri Slovena bez oružja, samo sa lirama (kitarama).'],
- ['626.','<b>Teodor Sinkel</b> opisuje avarsko-slovensku opsadu Carigrada: vriska i bojni poklici duž bedema.'],
- ['863.','<b>Ćirilo i Metodije</b>, Moravska misija: slovensko pismo i bogosluženje na slovenskom jeziku.'],
- ['886.','<b>Kliment</b> osniva Ohridsku školu, <b>Naum</b> radi u Preslavu (886-893).'],
- ['kraj XII - XIII vek','<b>Žitija i tipici</b> (Sveti Sava, Stefan Prvovenčani, Domentijan, Teodosije): glavni izvori o pojanju.'],
- ['1217.','Krunisanje <b>Stefana Prvovenčanog</b>: vlastela sluša bubnjeve i gusle.'],
- ['1335.','<b>Dragan Prizrenac</b> je gradski muzičar u Dubrovniku. U Dečanima (1335-1350) se slikaju talambasi.'],
- ['XIV vek','<b>Car Dušan</b> razmenjuje muzičare sa Dubrovnikom i poklanja ih uz posede.'],
- ['1389-1427.','<b>Despot Stefan Lazarević</b> ima muzičku kapelu na dvoru.'],
- ['XV vek','<b>Kir Stefan Srbin</b>, domestik, verovatno u Smederevu: „Ninja sili nebesnija".'],
- ['1459.','Pad Smedereva. Pod Turcima narod peva uz <b>gusle</b>, svira tambure, zurle i tapan.'],
- ['kraj XVIII veka','Kraj perioda stare srpske muzike. Sledi nova srpska muzika (XIX vek).']
+ ['VI-VII vek','Sloveni se doseljavaju na Balkan i donose svoje običaje, pesme i igre. Počinje period <b>stare srpske muzike</b>.'],
+ ['kraj VI - poč. VII veka','<b>Teofilakt Simokata</b> u „Istoriji" opisuje tri Slovena bez oružja, samo sa kitarama.'],
+ ['VII vek','<b>Teodor Sinkel</b>, arhivar Svete Sofije: pod Carigradom bojne trube sviraju na juriš.'],
+ ['IX vek','<b>Pokrštavanje</b> južnoslovenskih plemena, delatnost <b>Ćirila i Metodija</b> i njihovih učenika.'],
+ ['oko 900.','<b>Kliment</b> (?-917) i <b>Naum</b> (?-910) vode škole u Ohridu i Preslavu.'],
+ ['1054.','<b>Velika šizma</b>: granica Istoka i Zapada prolazi južnoslovenskim zemljama.'],
+ ['1180.','Najstariji prikaz <b>muzičkog instrumenta</b> na minijaturi.'],
+ ['1219.','<b>Samostalnost Srpske crkve</b>. Sveti Sava sastavlja službu Svetom Simeonu po osmoglasniku.'],
+ ['XII-XIV vek','Crkveni rukopisi sa <b>oznakama glasova</b>; žitija <b>Domentijana i Teodosija</b>.'],
+ ['1330.','<b>Bitka kod Velbužda</b> (opisuje je arhiepiskop Danilo): bojne trube i pobedničke pesme.'],
+ ['sredina XV veka','<b>Kir Stefan Srbin</b> na dvoru Lazara Brankovića u Smederevu: „Ninja sili", „Vkusite i vidite".'],
+ ['kraj XV veka','<b>Isaija Srbin</b> (Matejče); na freskama se javljaju <b>S-trube</b>.'],
+ ['XV-XVIII vek','<b>Turski period</b>: na freskama talambasi i daire; u narodu živi folklorna tradicija.'],
+ ['1766.','Zabrana rada <b>Pećke patrijaršije</b>. Centri kulture se seobama pomeraju na sever i zapad.'],
+ ['XVIII vek','Srpsko pojanje se prvi put objavljuje u <b>Srbuljama</b>. Kraj perioda stare srpske muzike.'],
+ ['1962.','<b>Stana Đurić-Klajn</b> piše prvu istoriju srpske muzike.']
 ];
 
 /* =========================================================
